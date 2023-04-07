@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "babel-plugin-styled-components": "^2.1.1",
+    "components": "^0.1.0",
     "gatsby": "^5.8.1",
+    "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-google-gtag": "^5.8.0",
     "gatsby-plugin-image": "^3.8.0",
     "gatsby-plugin-manifest": "^5.8.0",
@@ -26,8 +28,12 @@
     "gatsby-source-contentful": "^8.8.0",
     "gatsby-source-filesystem": "^5.8.0",
     "gatsby-transformer-sharp": "^5.8.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.9"
+  },
+  "devDependencies": {
+    "gatsby-plugin-root-import": "^2.0.9"
   }
 }
