@@ -4,6 +4,7 @@
  import Logo from 'assets/icons/logo-black.svg';
  import FacebookIcon from 'assets/icons/fb.svg';
  import InstagramIcon from 'assets/icons/Instagram.svg';
+ import {StyledIcon} from "components/StyledIcon/StyledIcon";
 
 export const Navigation = () => (
     <div>
@@ -17,7 +18,7 @@ export const Navigation = () => (
                 <li><Link to="/">Kontakt</Link></li>
             </ul>
         </nav>
-        <FacebookIcon/>
-        <InstagramIcon/>
+        <StyledIcon isDark><FacebookIcon/></StyledIcon>
+        <StyledIcon isDark><InstagramIcon/></StyledIcon>
     </div>
         )
