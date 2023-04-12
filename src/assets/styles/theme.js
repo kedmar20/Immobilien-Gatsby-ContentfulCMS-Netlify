@@ -20,9 +20,9 @@ export const theme = {
         },
     },
     mq: {
-        tablet: "@media (min-widht: 768px)",
-        desktop: "@media (min-widht: 1024px)",
-        bigDesktop: "@media (min-widht: 1280px)",
-        huge: "@media (min-widht: 1440px)",
+        tablet: "@media (min-width: 768px)",
+        desktop: "@media (min-width: 1024px)",
+        bigDesktop: "@media (min-width: 1280px)",
+        huge: "@media (min-width: 1440px)",
     }
 }

@@ -6,9 +6,27 @@
  import InstagramIcon from 'assets/icons/Instagram.svg';
  import {StyledIcon} from "components/StyledIcon/StyledIcon";
 
+ const WrapperNavigation = styled.div`
+ display: flex;
+   flex-direction: column;
+   width: 100%;
+   height: 100vh;
+   position: absolute;
+   top: 0;
+   left: 0;
+   background-color: white;
+   align-items: center;
+   justify-content: space-between;
+   padding: 50px;
+ `
+
+ const StyledLogo = styled(Logo)`
+ width: 300px;
+ `
+
 export const Navigation = () => (
-    <div>
-        <Link to="/"><Logo/></Link>
+    <WrapperNavigation>
+        <Link to="/"><StyledLogo/></Link>
         <nav>
             <ul>
                 <li><Link to="/">Immobilien</Link></li>
@@ -18,7 +36,15 @@ export const Navigation = () => (
                 <li><Link to="/">Kontakt</Link></li>
             </ul>
         </nav>
+        <div>
         <StyledIcon isDark><FacebookIcon/></StyledIcon>
         <StyledIcon isDark><InstagramIcon/></StyledIcon>
-    </div>
-        )
+        </div>
+    </WrapperNavigation>
+        );
+
+
+
+
+ 
+
