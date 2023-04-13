@@ -1,13 +1,13 @@
 import React from "react"
 import styled from "styled-components";
-import {Navigation} from 'components/Navigation/Navigation'
+import {Navigation} from "../components/Navigation/Navigation";
+
 
 
 const IndexPage = () => {
   return (
     <MainWrapper>
-      <h1>Sailer Immobilien</h1>
-        <Navigation/>
+        <Navigation />
     </MainWrapper>
   )
 }
