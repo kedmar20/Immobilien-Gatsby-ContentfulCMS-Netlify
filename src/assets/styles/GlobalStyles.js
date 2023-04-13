@@ -14,7 +14,16 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {   
-    font-size: 1.6rem;
+    font-size: 1.6rem;    
   }
 
-`
+  h1,h2,h3,h4,h5,h6 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+  }
+  
+  p{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+  }
+`;

@@ -42,8 +42,8 @@ export const Navigation = () => {
                     </ul>
                 </StyledNavigation>
                 <div>
-                    <StyledIcon isDark><FacebookIcon/></StyledIcon>
-                    <StyledIcon isDark><InstagramIcon/></StyledIcon>
+                    <StyledIcon isDark><Link to="https://www.facebook.com/"><FacebookIcon/></Link></StyledIcon>
+                    <StyledIcon isDark><Link to="https://www.instagram.com/"><InstagramIcon/></Link></StyledIcon>
                 </div>
             </WrapperNavigation>
         </OuterWrapperNavigation>

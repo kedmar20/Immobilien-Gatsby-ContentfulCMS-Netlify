@@ -2,11 +2,6 @@ import styled from "styled-components";
 
 
 export const StyledIconWrapper = styled.span`
-  
-  
-    
-    background-color: palevioletred;
-
   display: inline-block;
   margin: 0 20px;
   width: 50px;
@@ -17,7 +12,7 @@ export const StyledIconWrapper = styled.span`
   }
 
   svg path {
-    fill: ${({ isDark }) => (isDark ? '#FD0909' : '#fff')};
+    fill: ${({ isDark }) => (isDark ? '#111111' : '#fff')};
   }
 
   ${({ theme }) => theme.mq.desktop} {

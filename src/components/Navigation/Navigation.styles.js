@@ -39,7 +39,7 @@ export const WrapperNavigation = styled.div`
  `;
 
 export const StyledLogo = styled(({ isMobile, isSmall, ...props }) => <Logo {...props} />)`
-  width: ${({ isSmall }) => (isSmall ? '60px' : '100px')};
+  width: ${({ isSmall }) => (isSmall ? '100px' : '150px')};
   ${({ theme }) => theme.mq.desktop} {
     display: ${({ isMobile }) => (isMobile ? 'none' : 'initial')};
   }
@@ -54,12 +54,13 @@ export const StyledBurger = styled.button`
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0;
+  margin-right: 3px;
+  padding: 1px;
   z-index: 10;
 
   div {
     width: 2rem;
-    height: 0.15rem;
+    height: 0.18rem;
     background: black;
     position: relative;
   }
