@@ -10,7 +10,6 @@ export const StyledList = styled.ul`
     h3 {
       font-family: ${({ theme }) => theme.font.family.montserrat};
       font-weight: 700;
-      margin: 0;
     }
   }
   
