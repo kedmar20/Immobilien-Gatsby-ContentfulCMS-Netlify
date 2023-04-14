@@ -19,8 +19,9 @@ export const StyledHeading = styled.div`
     position: absolute;
     content: '';
     width: 100%;
-    height: calc(${({ theme }) => theme.font.size.headingSmall} * 1.5);
-    top: calc(-${({ theme }) => theme.font.size.headingSmall} / 6);
+    height: calc(${({ theme }) => theme.font.size.headingSmall} * 1.1);
+    // top: calc(-${({ theme }) => theme.font.size.headingSmall} / 1);
+    top: 0;
     left: -50%;
     background-color: ${({ theme }) => theme.colors.beige};
   }

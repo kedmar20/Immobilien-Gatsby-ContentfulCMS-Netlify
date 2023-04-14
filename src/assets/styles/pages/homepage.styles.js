@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { CornerEffect } from '../../../components/CornerEffectProvider/CornerEffect';
 import { Link } from 'gatsby';
-import arrowIcon from 'assets/icons/arrow.svg';
+import fb from '../../../assets/icons/fb.svg';
+import arrowIcon from '../../../assets/icons/arrow.svg';
+import {StyledList} from "../../../components/StyledList/StyledList.styles";
 
 
 export const Hero = styled.div`
@@ -89,8 +91,7 @@ const StyledSection = styled.section`
 `;
 
 export const WelcomeSection = styled(StyledSection)`
-  padding: 0 20px;
-  
+  padding: 0 35px;
   ${({ theme }) => theme.mq.desktop} {
     width: 100%;
     position: relative;
@@ -160,12 +161,26 @@ export const WelcomeSectionImage = styled(CornerEffect)`
   }
 `;
 
-export const AdvantagesSection = styled(StyledSection)`    
-  padding: 0 20px;
-  ${({ theme }) => theme.mq.desktop} {
+export const AdvantagesSection = styled(StyledSection)`
+  padding: 0 35px;
+
+  & li h3 {
+    margin-bottom: 5px;
+  }
+
+  ${({theme}) => theme.mq.desktop} {
+    margin: 150px 0 180px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    ${StyledList} {
+      li {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
   }
 `;
 
@@ -189,9 +204,11 @@ export const ShowcaseSection = styled(StyledSection)`
     }
 
     div:nth-child(2) {
+    //border: palevioletred solid 2px;
       display: flex;
       flex-direction: row;
       justify-content: center;
+      gap: 25px;      
     }
   }
 `;
@@ -260,6 +277,12 @@ export const StyledButton = styled.button`
   text-align: center;
   text-decoration: none;
   width: 85%;
+  transition: all 1s ease-out;
+  &:hover{
+    -webkit-box-shadow: 0px 0px 11px -2px rgba(0,0,0,0.58);
+    box-shadow: 0px 0px 11px -2px rgba(0,0,0,0.58);
+    transform: scale(103%);
+  }
 `;
 
 export const StyledLinkButton = styled(Link)`
@@ -280,8 +303,135 @@ export const StyledLinkButton = styled(Link)`
     background-position: 0 50%;
     width: 20px;
     height: 20px;
-    right: -35px;
+    right: 30px;
     top: 50%;
     transform: translateY(-50%);
+    border: red solid 3px;
+  }
+`;
+
+export const ServicesSection = styled(StyledSection)`
+
+  padding: 0 20px;
+  h2{
+    font-size: 36px;
+  }
+ 
+  & li h3 {
+    margin-bottom: 15px;
+  }
+  
+  ${({ theme }) => theme.mq.desktop} {
+    margin: 150px 0 180px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0 50px;
+    
+    div:first-child {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    & > p {
+      align-self: center;
+      max-width: 450px;
+    }
+    
+    ${StyledList} {
+      grid-row: 2 / 2;
+      grid-column: 1 / 3;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 50px;
+    }
+  }
+`;
+
+export const TeamImage = styled(CornerEffect)`
+  margin-top: 30px;
+  width: 90%;
+  height: 300px;
+  background-image: url("${({ imageSource }) => imageSource}");
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
+export const TeamSection = styled(StyledSection)`
+  padding: 0 35px;
+  ${TeamImage}:last-child {
+    display: none;
+  }
+  
+  ${({ theme }) => theme.mq.desktop} {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 50px;
+    
+    div:nth-child(1) {
+      grid-column: 1 / 1;
+  border: palevioletred solid 2px;
+      display: flex;
+      flex-direction: column;
+      //justify-content: space-betwee
+       gap: 15px;
+      position: relative;
+    }
+    
+    ${TeamImage} {
+      margin: 0;
+    }
+    
+    ${TeamImage}:nth-child(2) {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      width: 50%;
+      justify-self: end;
+    }
+    
+    ${TeamImage}:last-child {
+      height: 100%;
+      grid-row: 1 / 3;
+      grid-column: 2 / 3;
+      display: block;
+    }
+  }
+`;
+
+export const ReviewsSection = styled(StyledSection)`
+  padding: 0 35px;
+  ${({ theme }) => theme.mq.desktop} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 120px;
+    
+    div:first-child {
+      grid-row: 1 / 1;
+      grid-column: 2 / 3;
+      align-self: center;
+      
+      h2 {
+        max-width: 300px;
+        margin: 0;
+      }
+    }
+
+    div:last-child {
+      grid-row: 1 / 1;
+      grid-column: 1 / 2;
+    }
+  }
+`;
+
+export const StyledReview = styled.div`
+  border: 1px solid ${({ theme }) => theme.colors.steel};
+  padding: 40px 40px 20px;
+  margin: 30px 0;
+  
+  p:last-child {
+    margin-top: 30px;
+    font-weight: 700;
   }
 `;
