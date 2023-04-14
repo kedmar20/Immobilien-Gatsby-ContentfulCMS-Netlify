@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { CornerEffect } from '../../../components/CornerEffectProvider/CornerEffect';
+import { Link } from 'gatsby';
+import arrowIcon from 'assets/icons/arrow.svg';
+
 
 export const Hero = styled.div`
   background-image: url("${({ imageSource }) => imageSource}");
@@ -79,8 +82,7 @@ export const HeroHeading = styled(CornerEffect)`
 // `;
 
 const StyledSection = styled.section`
-  margin: 100px 0;
-  
+  margin: 100px 0;  
   ${({ theme }) => theme.mq.desktop} {
     margin: 100px 0;
   }
@@ -158,3 +160,128 @@ export const WelcomeSectionImage = styled(CornerEffect)`
   }
 `;
 
+export const AdvantagesSection = styled(StyledSection)`    
+  padding: 0 20px;
+  ${({ theme }) => theme.mq.desktop} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+export const ShowcaseSection = styled(StyledSection)`
+  h2 {
+    font-size: ${({ theme }) => theme.font.size.headingMobiles};
+    text-align: center;
+    margin: 30px 0 10px;
+  }
+
+  div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  ${({ theme }) => theme.mq.desktop} {
+    margin-top: -60px;
+    
+    h2 {
+      margin: 0 0 30px;
+    }
+
+    div:nth-child(2) {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+`;
+
+export const ShowcaseGallery = styled.div`
+  margin: 25px 0 50px;
+  position: relative;
+  
+  ${({ theme }) => theme.mq.desktop} {
+    margin: 50px 0 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 25px;
+    position: relative;
+
+    img:nth-child(1) {
+      grid-row: 1 / 2
+    }
+
+    img:nth-child(2) {
+      grid-row: 1 / 3
+    }
+
+    img:nth-child(3) {
+      grid-row: 2 / 4
+    }
+
+    img:nth-child(4) {
+      grid-row: 3 / 4
+    }
+  }
+`;
+
+export const ShowcaseCorner = styled(CornerEffect)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+`;
+
+export const ShowcaseImage = styled.img`
+  width: 100%;
+  height: ${({ isBig }) => (isBig ? '250px' : '125px')};
+  object-fit: cover;
+  margin: 10px 0;
+  
+  ${({ theme }) => theme.mq.desktop} {
+    height: 100%;
+    margin: 0;
+  }
+`;
+
+export const StyledButton = styled.button`
+  border: 1px solid ${({ theme }) => theme.colors.dark};
+  background-color: transparent;
+  font-size: ${({ theme }) => theme.font.size.button};
+  font-family: ${({ theme }) => theme.font.family.montserrat};
+  font-weight: 500;
+  padding: 10px 15px;
+  display: block;
+  margin: 8px auto;
+  color: black;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  width: 85%;
+`;
+
+export const StyledLinkButton = styled(Link)`
+  font-family: ${({ theme }) => theme.font.family.montserrat};
+  font-size: ${({ theme }) => theme.font.size.paragraph};
+  color: ${({ theme }) => theme.colors.dark};
+  text-decoration: underline;
+  position: relative;
+  display: inline-block;
+  margin: 5px 0 10px;
+
+  &::after {
+    position: absolute;
+    content: '';
+    background-image: url("${arrowIcon}");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 0 50%;
+    width: 20px;
+    height: 20px;
+    right: -35px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+`;

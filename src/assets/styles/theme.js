@@ -21,7 +21,7 @@ export const theme = {
         },
         family: {
             montserrat: '"Montserrat", sans-serif',
-            cormorant: '"Lato", sans-serif',
+            lato: '"Lato", sans-serif',
         },
     },
     mq: {

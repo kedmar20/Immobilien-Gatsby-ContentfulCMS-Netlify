@@ -5,7 +5,7 @@ import { HighlightedHeading } from 'components/HighlightedHeading/HighlightedHea
 import {
     AdvantagesSection,
     Hero,
-    HeroHeading, HeroImage,
+    HeroHeading,
     ReviewsSection,
     ServicesSection, ShowcaseCorner,
     ShowcaseGallery,
@@ -17,6 +17,9 @@ import {
     WelcomeSectionContent,
     WelcomeSectionImage,
 } from 'assets/styles/pages/homepage.styles';
+import { StyledList } from 'components/StyledList/StyledList.styles';
+// import { ContactForm } from '../components/ContactForm/ContactForm';
+
 
 
 const IndexPage = ({data}) => {
@@ -43,6 +46,55 @@ const IndexPage = ({data}) => {
             </WelcomeSectionContent>
             <WelcomeSectionImage position="bottomLeft" color="beige" size="100px" distance="30px" imageSource={data.welcome.publicURL} />
         </WelcomeSection>
+
+
+        <AdvantagesSection>
+            <HighlightedHeading width="50" isRight>Das dürfen Sie von uns erwarten:</HighlightedHeading>
+            <StyledList>
+                <li>
+                    <h3>
+                        UNSER MAKLERVERSPRECHEN AN SIE
+                    </h3>
+                    <p>
+                        Von Anfang an ist Ihre Immobilie bei uns in guten Händen. Sie haben mit uns nicht nur einen Immobilienmakler, sondern einen Immobilien-Partner an Ihrer Seite, dem Ihr Immobilienverkauf mindestens genauso wichtig ist, wie Ihnen.
+                    </p>
+                </li>
+                <li>
+                    <h3>
+                        TOP PREIS-LEISTUNG UND KEINERLEI RISIKO
+                    </h3>
+                    <p>
+                        Sie vertrauen uns Ihre Immobilie an und wir vertrauen auf eine gute Zusammenarbeit. Als Maler Ihres Vertrauens gehen wir für einen erfolgreichen Verkaufsabschluss mit allem in Vorleistung.
+                    </p>
+                </li>
+                <li>
+                    <h3>
+                        EIN IMMOBILIENPROFI, DER FÜR SIE ALLES ÜBERNIMMT
+                    </h3>
+                    <p>
+                        Sie lehnen sich zurück und wir als Ihr Full-Service-Immobilienmakler erledigen alles: von der Unterlagenbeschaffung, Fotos, Video, 3D-Darstellung, Marketing, Terminabsprachen, bis hin zum Bereitstellen der echten Kaufinteressenten.
+                    </p>
+                </li>
+            </StyledList>
+        </AdvantagesSection>
+        <ShowcaseSection>
+            <h2>Immobilien</h2>
+            <div>
+                <StyledButton as={Link} to="/oferty" isCentered>ZU VERKAUFEN</StyledButton>
+                <StyledButton as={Link} to="/realizacje" isCentered>ZU VERMIETEN</StyledButton>
+            </div>
+            <ShowcaseGallery>
+                <ShowcaseImage src={data.grid1.publicURL} alt="#" />
+                <ShowcaseImage isBig src={data.grid2.publicURL} alt="#" />
+                <ShowcaseImage src={data.grid3.publicURL} alt="#" />
+                <ShowcaseImage isBig src={data.grid4.publicURL} alt="#" />
+                <ShowcaseCorner position="bottomLeft" size="100px" distance="30px" color="beige" />
+                <ShowcaseCorner position="topRight" size="100px" distance="30px" color="dark" />
+            </ShowcaseGallery>
+        </ShowcaseSection>
+
+
+
     </MainWrapper>
   )
 }
