@@ -22,7 +22,7 @@ export const StyledHeading = styled.div`
     height: calc(${({ theme }) => theme.font.size.headingSmall} * 1.5);
     top: calc(-${({ theme }) => theme.font.size.headingSmall} / 6);
     left: -50%;
-    background-color: ${({ theme }) => theme.color.beige};
+    background-color: ${({ theme }) => theme.colors.beige};
   }
   
   ${({ theme }) => theme.mq.desktop} {
@@ -36,7 +36,7 @@ export const StyledHeading = styled.div`
       top: calc(-${({ theme }) => theme.font.size.headingSmall} / 6);
       left: ${({ isRight }) => (isRight ? 'unset' : '-5%')};
       right: ${({ isRight }) => (isRight ? '-5%' : 'unset')};
-      background-color: ${({ theme }) => theme.color.beige};
+      background-color: ${({ theme }) => theme.colors.beige};
     }
   }
 `;

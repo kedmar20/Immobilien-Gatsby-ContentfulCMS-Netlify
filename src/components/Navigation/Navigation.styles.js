@@ -81,7 +81,7 @@ export const StyledNavigation = styled.nav`
       a {
         display: inline-block;
         padding: 25px;
-        font-family: ${({ theme }) => theme.font.family.cormorant};
+        font-family: ${({ theme }) => theme.font.family.lato};
         color: black;
         text-decoration: none;
         font-size: ${({ theme }) => theme.font.size.mobileMenu};

@@ -9,20 +9,20 @@ export const HighlightedHeading = ({
     const headingRef = useRef(null);
     const [playState, setPlayState] = useState(false);
 
-    const handlePlayStateChange = throttle(() => {
-        const { top } = headingRef.current.getBoundingClientRect();
-        if (top < 800) {
-            setPlayState(true);
-        }
-    }, 150);
-
-    useEffect(() => {
-        document.addEventListener('scroll', handlePlayStateChange);
-
-        return () => {
-            document.removeEventListener('scroll', handlePlayStateChange);
-        };
-    }, []);
+    // const handlePlayStateChange = throttle(() => {
+    //     const { top } = headingRef.current.getBoundingClientRect();
+    //     if (top < 800) {
+    //         setPlayState(true);
+    //     }
+    // }, 150);
+    //
+    // useEffect(() => {
+    //     document.addEventListener('scroll', handlePlayStateChange);
+    //
+    //     return () => {
+    //         document.removeEventListener('scroll', handlePlayStateChange);
+    //     };
+    // }, []);
 
     return (
         <StyledHeading playState={playState} ref={headingRef} width={width} isRight={isRight} as={`h${level}`} {...props}>{children}</StyledHeading>
