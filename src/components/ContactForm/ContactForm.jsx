@@ -9,14 +9,14 @@ export const ContactForm = () => {
     return (
         // <ContactFormWrapper onSubmit={handleSubmit}>
         <ContactFormWrapper>
-            <label htmlFor="email">E-Mail</label>
-            <input type="email" name="email" id="email" placeholder="E-Mail" />
+            <label htmlFor="email">Geben Sie Ihre E-Mail Adresse ein</label>
+            <input type="email" name="email" id="email" placeholder="E-Mail..." />
             {/*<ValidationError*/}
             {/*    prefix="Email"*/}
             {/*    field="email"*/}
             {/*    errors={state.errors}*/}
-            />
-            <label htmlFor="message">Ihre Nachricht</label>
+            {/*/>*/}
+            <label htmlFor="message">Schreiben Sie Ihre Nachricht</label>
             <textarea name="message" id="message" placeholder="Ihre Nachricht..." />
             {/*<ValidationError*/}
             {/*    prefix="Message"*/}

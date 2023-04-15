@@ -297,16 +297,16 @@ export const StyledLinkButton = styled(Link)`
   &::after {
     position: absolute;
     content: '';
+    border: red solid 3px;
     background-image: url("${arrowIcon}");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: 0 50%;
     width: 20px;
     height: 20px;
-    right: 30px;
+    //right: 30px;
     top: 50%;
     transform: translateY(-50%);
-    border: red solid 3px;
   }
 `;
 
@@ -314,7 +314,7 @@ export const ServicesSection = styled(StyledSection)`
 
   padding: 0 20px;
   h2{
-    font-size: 36px;
+    font-size: 32px;
   }
  
   & li h3 {
@@ -331,6 +331,9 @@ export const ServicesSection = styled(StyledSection)`
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      h2{
+        font-size: 42px;
+      }
     }
     
     & > p {
@@ -350,7 +353,7 @@ export const ServicesSection = styled(StyledSection)`
 
 export const TeamImage = styled(CornerEffect)`
   margin-top: 30px;
-  width: 90%;
+  //width: 90%;
   height: 300px;
   background-image: url("${({ imageSource }) => imageSource}");
   background-repeat: no-repeat;
@@ -362,6 +365,10 @@ export const TeamSection = styled(StyledSection)`
   ${TeamImage}:last-child {
     display: none;
   }
+  ${StyledLinkButton}::after{
+    background-color: aqua;
+top:75%;
+  }
   
   ${({ theme }) => theme.mq.desktop} {
     padding: 0;
@@ -369,10 +376,10 @@ export const TeamSection = styled(StyledSection)`
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-gap: 50px;
+    margin: 150px;
     
     div:nth-child(1) {
       grid-column: 1 / 1;
-  border: palevioletred solid 2px;
       display: flex;
       flex-direction: column;
       //justify-content: space-betwee
@@ -396,6 +403,10 @@ export const TeamSection = styled(StyledSection)`
       grid-row: 1 / 3;
       grid-column: 2 / 3;
       display: block;
+    }
+    ${StyledLinkButton}::after{
+      background-color: gray;
+      top:50%;
     }
   }
 `;
@@ -433,5 +444,17 @@ export const StyledReview = styled.div`
   p:last-child {
     margin-top: 30px;
     font-weight: 700;
+  }
+`;
+
+export const ContactSection = styled(StyledSection)`
+  
+  ${({ theme }) => theme.mq.desktop} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 180px auto 50px;
+    width: 100%;
+    max-width: 800px;
   }
 `;
