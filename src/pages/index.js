@@ -16,6 +16,7 @@ import {
     WelcomeSection,
     WelcomeSectionContent,
     WelcomeSectionImage,
+    ContactSection,
 } from 'assets/styles/pages/homepage.styles';
 import { StyledList } from 'components/StyledList/StyledList.styles';
 import { ContactForm } from '../components/ContactForm/ContactForm';
@@ -131,7 +132,7 @@ const IndexPage = ({data}) => {
         </ServicesSection>
         <TeamSection>
             <div>
-                <HighlightedHeading isRight width="70">Kontaktieren Sie uns</HighlightedHeading>
+                <HighlightedHeading width="70">Kontaktieren Sie uns</HighlightedHeading>
                 <p>
                     Freundlicher Kundenkontakt auf Augenhöhe und modernste Vermarktungsmöglichkeiten sind uns besonders wichtig.
                 </p>
@@ -164,7 +165,10 @@ const IndexPage = ({data}) => {
                 </StyledReview>
             </div>
         </ReviewsSection>
-        <ContactForm />
+        <ContactSection>
+            <HighlightedHeading width="70">Kontaktformular</HighlightedHeading>
+            <ContactForm/>
+        </ContactSection>
     </MainWrapper>
   )
 }

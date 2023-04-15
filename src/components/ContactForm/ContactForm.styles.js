@@ -29,8 +29,9 @@ export const ContactFormWrapper = styled.form`
   }
   
   ${({ theme }) => theme.mq.desktop} {
-    max-width: 400px;
-    margin: 0 auto 100px;
+    max-width: 800px;
+    margin: 50px auto 100px;
+    width: 100%;
     
     h2 {
       max-width: 300px;

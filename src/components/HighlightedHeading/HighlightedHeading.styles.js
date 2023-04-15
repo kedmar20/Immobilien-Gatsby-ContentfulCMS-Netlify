@@ -29,7 +29,7 @@ export const StyledHeading = styled.div`
   ${({ theme }) => theme.mq.desktop} {
     &::before {
       transform-origin: ${({ isRight }) => (isRight ? '100% 50%' : '0 50%')};
-      transform: scaleX(0);
+      // transform: scaleX(0);
       animation: ${appearAnimation} 0.8s 0.3s cubic-bezier(.47,.46,.28,.97) forwards;
       animation-play-state: ${({ playState }) => (playState ? 'running' : 'paused')};
       width: ${({ width }) => (width ? `${width}%` : '50%')};
