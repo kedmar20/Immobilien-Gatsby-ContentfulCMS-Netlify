@@ -173,7 +173,7 @@ const IndexPage = ({data}) => {
   )
 }
 
-const MainWrapper = styled.div`
+export const MainWrapper = styled.div`
  // background-color: ${({theme})=>theme.colors.steel};
   font-family: ${({ theme }) => theme.font.family.montserrat};
   width: 100vw;
