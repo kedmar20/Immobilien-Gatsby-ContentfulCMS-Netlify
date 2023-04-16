@@ -26,7 +26,7 @@ export const ThumbnailImage = styled.img`
 
 export const ThumbnailInfo = styled.div`
   width: 100%;
-  padding: 20px;
+  padding: 0 20px 40px;
   
   p:first-child {
     font-size: ${({ theme }) => theme.font.size.thumbnailSmall};
@@ -34,6 +34,7 @@ export const ThumbnailInfo = styled.div`
     text-transform: uppercase;
     color: white;
     position: relative;
+    margin-bottom: 20px;
   }
   
   p:first-child::after {

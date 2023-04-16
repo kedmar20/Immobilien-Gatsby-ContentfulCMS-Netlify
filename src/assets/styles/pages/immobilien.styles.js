@@ -22,7 +22,6 @@ export const IntroSection = styled.section`
     margin-bottom: 15px;
   }
   ${StyledHeading} {  
-    border: blue solid 2px;
     &::before {
       top: -15%;
     }
@@ -38,13 +37,13 @@ export const IntroSection = styled.section`
 `;
 
 export const FiltersList = styled.ul`
-  margin: 0 0 50px;
+  margin: 30px 0 50px;
   padding: 0;
   display: flex;
   flex-direction: column;
   list-style: none;
   width: 100%;
-  align-items: flex-start;
+  align-items: center;
   
   li {
     padding: 10px 0;
@@ -70,7 +69,7 @@ export const Gallery = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 50px;
-  
+  margin-bottom: 50px;  
   ${({ theme }) => theme.mq.tablet} {
     grid-template-columns: repeat(2, 1fr);
   }
