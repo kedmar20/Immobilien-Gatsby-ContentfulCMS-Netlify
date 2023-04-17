@@ -21,4 +21,4 @@ export const StyledIconWrapper = styled.span`
     margin: 0 15px;
   }
     
-    `
+    `;

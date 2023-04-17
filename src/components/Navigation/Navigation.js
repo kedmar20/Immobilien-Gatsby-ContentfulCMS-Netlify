@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
  import { Link } from "gatsby";
- import FacebookIcon from 'assets/icons/fb.svg';
+ import FacebookIcon from 'assets/icons/facebook.svg';
  import InstagramIcon from 'assets/icons/Instagram.svg';
  import {StyledIcon} from "components/StyledIcon/StyledIcon";
  import {OuterWrapperNavigation,
@@ -8,11 +8,6 @@ import React, { useState } from 'react';
      StyledLogo,
      StyledNavigation,
      WrapperNavigation,} from "./Navigation.styles";
-
-
-
-
-
 
 export const Navigation = () => {
     const [isOpen, setIsOpen] = useState(false);
