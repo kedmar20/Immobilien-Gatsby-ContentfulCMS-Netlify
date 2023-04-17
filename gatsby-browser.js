@@ -1,5 +1,5 @@
 import React from "react";
-import {MainTemplate} from "components/MainTemplate";
+import {MainTemplate} from "templates/MainTemplate";
 // import {MainTemplate} from "./src/components/MainTemplate";
 
 export const wrapPageElement = ({element, props}) =>(

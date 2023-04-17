@@ -1,5 +1,4 @@
 import React, {useState,useEffect} from "react"
-import styled from "styled-components";
 import { HighlightedHeading } from 'components/HighlightedHeading/HighlightedHeading';
 import { graphql } from 'gatsby';
 import {
@@ -20,23 +19,21 @@ const [data200, setData200] = useState([]);
                 </p>
             </IntroSection>
             <FiltersList>
-                <li>Mieszkanie</li>
-                <li>Dom</li>
-                <li>Działka</li>
+                <li>Wohnungen</li>
+                <li>Häuser</li>
+                <li>Grundstücken</li>
             </FiltersList>
-            {console.log(data200)}
             {useEffect(()=>{
                 setData200(Object.values(data))
-            },[data])
+            },[])
 
                }
-            {console.log(data200)}
 
             {(!data200.length)
                 ? (
                     <EmptyState>
-                        <h2>Brak ofert</h2>
-                        <h3>Już niebawem nowe oferty od Modern Studio</h3>
+                        <h2>keine Angebote</h2>
+                        <h3>Neue Angebote von SeilerImmobilien folgen in Kürze</h3>
                     </EmptyState>)
                 : (<Gallery>
                     <Thumbnail imageSource={data.immo1.publicURL}/>
