@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-// import arrowIcon from '../../icons/arrow.svg';
-import arrowIcon from 'assets/icons/blocks.svg';
+import arrowIcon from '../../icons/arrow.svg';
 import { StyledList } from '../../../components/StyledList/StyledList.styles';
 
 export const Hero = styled.div`
@@ -12,8 +11,10 @@ export const Hero = styled.div`
   margin-bottom: 100px;
 
   h1 {
-    margin: 0;
-    font-size: ${({ theme }) => theme.font.size.heading};
+    font-size: calc(${({ theme }) => theme.font.size.heading} * 0.8);
+    margin: 0 65px 0 auto ;
+    line-height: 1.2;
+    background-color: hsla(0, 100%, 100%, 0.6);
   }
   
   ${({ theme }) => theme.mq.tablet} {
@@ -22,23 +23,28 @@ export const Hero = styled.div`
   
   ${({ theme }) => theme.mq.desktop} {
     height: ${({ theme }) => theme.size.desktopHeroHeight};
-    justify-content: flex-end;
+    //justify-content: flex-end;
+    margin: 150px ;
+    padding: 110px 0 50px 0;
     
     h1 {
-      background-color: hsla(0, 100%, 100%, 0.6);
-      padding: 30px 20px;
+      //background-color: hsla(0, 100%, 100%, 0.6);
+      padding: 30px 25px;
       max-width: 550px;
-      margin-bottom: 380px;
+      //margin-bottom: 380px;
+      margin: 0 auto 0 5px;
+      //margin: 0 35px 0 auto;
     }
   }
 `;
 
 export const HeroInfo = styled.div`
+  font-family: Montserrat;
   a {
     color: black;
     font-weight: 700;
     position: relative;
-    left: 30px;
+    left: 10px;    
 
     &::before {
       position: absolute;
@@ -47,13 +53,11 @@ export const HeroInfo = styled.div`
       background-repeat: no-repeat;
       background-size: contain;
       background-position: 0 50%;
-      width: 20px;
-      height: 20px;
       left: -30px;
       top: 50%;
       transform: translateY(-50%) rotate(90deg);
-      //border: red solid 1px;
-      color: red;
+      width: 20px;
+      height: 100%;   
     }
   }
   
@@ -62,6 +66,7 @@ export const HeroInfo = styled.div`
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: row-reverse;
+    padding: 0 55px;
     
     &::before {
       content: '';
@@ -69,25 +74,23 @@ export const HeroInfo = styled.div`
       width: 100%;
       position: absolute;
       background-color: ${({ theme }) => theme.colors.steel};
-      transform: translateY(-50px);
-      border: green solid 1px;
+      transform: translate(60px, -50px);
+      //transform: translateX(-50px);
     }
     
     p {
       margin: 0;
       width: 460px;
     }
-  }
-  
-  
+  }  
 `;
 
 export const HeroImage = styled.div`
-  background-image: url("${({ imageSource }) => imageSource}");
+  background-image: url("${({ imageSource }) => imageSource}");    
   background-position: 50% 50%;
   background-size: cover;
   width: 90%;
-  height: 60%;
+  height: 65%;
   position: absolute;
   z-index: -1;
   top: 15%;
@@ -105,8 +108,9 @@ export const HeroImage = styled.div`
 `;
 
 export const ServicesStyledList = styled(StyledList)`
+  
   li {
-    margin: 80px 0;
+    margin: 60px 0;
     max-width: 500px;
   }
 
@@ -115,13 +119,15 @@ export const ServicesStyledList = styled(StyledList)`
   }
   
   ${({ theme }) => theme.mq.desktop} {
-    grid-template-rows: repeat(2, 300px)
+    grid-template-rows: repeat(2, 1fr)
+    margin: 0 85px;
+    border: yellow solid 2px;
   }
 `;
 
 export const ContentWrapperLeistungen = styled.div`
 {
-  margin: 90px 0;
+  margin: 90px 0px;
   padding: 0 15px;
 }
     `;

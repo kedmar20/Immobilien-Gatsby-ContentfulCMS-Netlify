@@ -2,7 +2,6 @@ import React from 'react';
 import BlocksIcon from 'assets/icons/blocks.svg';
 import ConsultancyIcon from 'assets/icons/consultancy.svg';
 import HeartIcon from 'assets/icons/heart.svg';
-import KeyIcon from 'assets/icons/key.svg';
 import PeopleIcon from 'assets/icons/people.svg';
 import SuitcaseIcon from 'assets/icons/suitcase.svg';
 import PenIcon from 'assets/icons/pen.svg';
@@ -15,7 +14,7 @@ import { HighlightedHeading } from '../components/HighlightedHeading/Highlighted
 const Leistungen = ({ data }) => (
     <ContentWrapperLeistungen>
         <Hero>
-            <h1>Full-Service-Büro für alle Anliegen des Immobilienverkaufs</h1>
+            <h1>Full-Service-Büro für alle Anliegen des Immobilien-verkaufs</h1>
             <HeroImage imageSource={data.leistungen.publicURL} />
             <HeroInfo>
                 <p>
@@ -68,8 +67,6 @@ const Leistungen = ({ data }) => (
                 <h3>Unterlagen</h3>
                 <p>
                     Komplette Unterlagen-Beschaffung inkl. Bankenpaket.
-
-
                 </p>
             </li>
         </ServicesStyledList>
@@ -80,7 +77,7 @@ export const query = graphql`
     query {
         leistungen: file(relativePath: {regex: "/leistungen\/leistungen.jpg/"}) {
             publicURL
-        },
+        },       
     }`;
 
 export default Leistungen;
