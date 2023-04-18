@@ -6,7 +6,9 @@ import { CornerEffect } from 'components/CornerEffectProvider/CornerEffect';
 
 const HomeStaging = ({ data }) => (
     <ContentWrapperHomestaging isSubpage>
-        <CornerEffect position="bottomRight" size="100px" distance="30px">
+        <CornerEffect position="bottomRight"
+            size={(window.innerWidth>1100) ? "100px" : "0px"}
+                      distance="30px">
             <IntroSection>
                 <div>
                     <HighlightedHeading width="65">UNSER DESIGN DES ERFOLGREICHEN IMMOBILIENVERKAUFS</HighlightedHeading>
@@ -17,7 +19,7 @@ const HomeStaging = ({ data }) => (
                 <img src={data.homestaging1.publicURL} alt="" />
             </IntroSection>
         </CornerEffect>
-        <CornerEffect position="topLeft" size="100px" distance="30px" color="beige">
+        <CornerEffect position="topLeft" size={(window.innerWidth>1100) ? "100px" : "0px"} distance="30px" color="beige">
             <PortfolioItem isOdd>
                 <div>
                     <HighlightedHeading width="70">Grünestraße</HighlightedHeading>
@@ -28,7 +30,7 @@ const HomeStaging = ({ data }) => (
                 <img src={data.gruenestrasse.publicURL} alt="" />
             </PortfolioItem>
         </CornerEffect>
-        <CornerEffect position="bottomRight" size="100px" distance="30px" color="dark">
+        <CornerEffect position="bottomRight" size={(window.innerWidth>1100) ? "100px" : "0px"} distance="30px" color="dark">
             <PortfolioItem>
                 <div>
                     <HighlightedHeading width="80">Türkisstraße</HighlightedHeading>
@@ -39,7 +41,7 @@ const HomeStaging = ({ data }) => (
                 <img src={data.tuerkisstrasse.publicURL} alt="" />
             </PortfolioItem>
         </CornerEffect>
-        <CornerEffect position="topLeft" size="100px" distance="30px" color="beige">
+        <CornerEffect position="topLeft" size={(window.innerWidth>1100) ? "100px" : "0px"} distance="30px" color="beige">
             <PortfolioItem isOdd>
                 <div>
                     <HighlightedHeading width="80">Lavendelstraße</HighlightedHeading>
@@ -50,7 +52,7 @@ const HomeStaging = ({ data }) => (
                 <img src={data.lavendelstrasse.publicURL} alt="" />
             </PortfolioItem>
         </CornerEffect>
-        <CornerEffect position="bottomRight" size="100px" distance="30px" color="beige">
+        <CornerEffect position="bottomRight" size={(window.innerWidth>1100) ? "100px" : "0px"} distance="30px" color="beige">
             <PortfolioItem isFullWidth>
                 <div>
                     <HighlightedHeading>Beigestraße</HighlightedHeading>
