@@ -27,7 +27,7 @@ const IndexPage = ({data}) => {
   return (
     <MainWrapper>
       <Hero imageSource={data.hero.publicURL} >
-        <HeroHeading position="bottomLeft" color="dark" size="100px" distance="30px">
+        <HeroHeading position="bottomLeft" color="dark" size="70px" distance="20px">
           <h1>FÜR UNSERE KUNDEN NUR DAS BESTE!</h1>
           <p>MIT UNS ALS IMMOBILIENMAKLER
               ERLEBEN SIE DEN IMMOBILIENVERKAUF
@@ -36,7 +36,7 @@ const IndexPage = ({data}) => {
         {/*<HeroImage imageSource={data.hero.publicURL} />*/}
       </Hero>
         <WelcomeSection>
-            <WelcomeSectionContent position="topRight" size="100px" distance="30px" offset="600">
+            <WelcomeSectionContent position="topRight" size="70px" distance="20px" offset="600">
                 <h2>
                     DER IMMOBILIENMAKLER  MIT DEM „RUNDUM-SORGLOS-PAKET“
                 </h2>
@@ -45,7 +45,7 @@ const IndexPage = ({data}) => {
                 <p>Durch Home Staging lassen wir jede Immobilie im besten Licht erstrahlen. Verkaufen Sie Ihre Immobilie unkompliziert, zügig und rechtssicher.
                 </p>
             </WelcomeSectionContent>
-            <WelcomeSectionImage position="bottomLeft" color="beige" size="100px" distance="30px" imageSource={data.welcome.publicURL} />
+            <WelcomeSectionImage position="bottomLeft" color="beige" size="70px" distance="20px" imageSource={data.welcome.publicURL} />
         </WelcomeSection>
 
 
@@ -89,8 +89,11 @@ const IndexPage = ({data}) => {
                 <ShowcaseImage isBig src={data.grid2.publicURL} alt="#" />
                 <ShowcaseImage src={data.grid3.publicURL} alt="#" />
                 <ShowcaseImage isBig src={data.grid4.publicURL} alt="#" />
-                <ShowcaseCorner position="bottomLeft" size="100px" distance="30px" color="beige" />
-                <ShowcaseCorner position="topRight" size="100px" distance="30px" color="dark" />
+                {console.log(window.innerWidth)}
+                {(window.innerWidth>1100) ? (
+                <ShowcaseCorner position="bottomLeft" size="100px" distance="30px" color="beige" />):''}
+                {(window.innerWidth>1100) ? (
+                <ShowcaseCorner position="topRight" size="100px" distance="30px" color="dark" />):''}
             </ShowcaseGallery>
         </ShowcaseSection>
         <ServicesSection>
