@@ -53,9 +53,7 @@ export const CornerEffectWrapper = styled.div`
     animation-play-state: ${({ playState }) => (playState ? 'running !important' : 'paused !important')};
   }
   
-  ${({
-                                                                                                                                                               theme, pseudoelement, color, size, distance, position,
-                                                                                                                                                           }) => css`
+  ${({theme, pseudoelement, color, size, distance, position,}) => css`
     &::${pseudoelement} {
         background-color: ${theme.colors[color]};
         position: absolute;
