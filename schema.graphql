@@ -167,6 +167,18 @@ interface RemoteFile {
 type ContentfulAsset implements ContentfulReference & Node & RemoteFile {
     children: [Node!]!
     contentful_id: String!
+    createdAt(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date
+    description: String
+    file: ContentfulAssetFile
     filename: String!
     filesize: Int
     "Data used in the <GatsbyImage /> component. See https://gatsby.dev/img for more info."
@@ -318,7 +330,9 @@ type ContentfulAsset implements ContentfulReference & Node & RemoteFile {
     id: ID!
     internal: Internal!
     mimeType: String!
+    node_locale: String
     parent: Node
+    placeholderUrl: String
     publicUrl: String!
     resize(
         aspectRatio: Float,
@@ -336,6 +350,21 @@ type ContentfulAsset implements ContentfulReference & Node & RemoteFile {
         quality: Int = 75,
         width: Int
     ): RemoteFileResize
+    size: Int
+    spaceId: String
+    sys: ContentfulAssetSys
+    title: String
+    updatedAt(
+        "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
+        difference: String,
+        "Format the date using Moment.js' date tokens, e.g. `date(formatString: \"YYYY MMMM DD\")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens."
+        formatString: String,
+        "Returns a string generated with Moment.js' `fromNow` function"
+        fromNow: Boolean,
+        "Configures the locale Moment.js will use to format the date."
+        locale: String
+    ): Date
+    url: String
     width: Int
 }
 
@@ -357,6 +386,23 @@ type ContentfulAssetEdge {
     previous: ContentfulAsset
 }
 
+type ContentfulAssetFile {
+    contentType: String
+    details: ContentfulAssetFileDetails
+    fileName: String
+    url: String
+}
+
+type ContentfulAssetFileDetails {
+    image: ContentfulAssetFileDetailsImage
+    size: Int
+}
+
+type ContentfulAssetFileDetailsImage {
+    height: Int
+    width: Int
+}
+
 type ContentfulAssetGroupConnection {
     distinct(field: ContentfulAssetFieldSelector!): [String!]!
     edges: [ContentfulAssetEdge!]!
@@ -371,9 +417,15 @@ type ContentfulAssetGroupConnection {
     totalCount: Int!
 }
 
+type ContentfulAssetSys {
+    revision: Int
+    type: String
+}
+
 type ContentfulContentType implements Node {
     children: [Node!]!
     description: String
+    displayField: String
     id: ID!
     internal: Internal!
     name: String
@@ -449,8 +501,15 @@ type ContentfulEntryGroupConnection {
     totalCount: Int!
 }
 
-type ContentfulProduct implements ContentfulEntry & ContentfulReference & Node {
+type ContentfulImmoEinAngebot implements ContentfulEntry & ContentfulReference & Node {
+    address: String
+    areaM2: Int
+    "Returns the first child node of type contentfulImmoEinAngebotDescriptionTextNode or null if there are no children of given type on this node"
+    childContentfulImmoEinAngebotDescriptionTextNode: contentfulImmoEinAngebotDescriptionTextNode
     children: [Node!]!
+    "Returns all children nodes filtered by type contentfulImmoEinAngebotDescriptionTextNode"
+    childrenContentfulImmoEinAngebotDescriptionTextNode: [contentfulImmoEinAngebotDescriptionTextNode]
+    condition: String
     contentful_id: String!
     createdAt(
         "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
@@ -462,13 +521,18 @@ type ContentfulProduct implements ContentfulEntry & ContentfulReference & Node {
         "Configures the locale Moment.js will use to format the date."
         locale: String
     ): Date
+    description: contentfulImmoEinAngebotDescriptionTextNode
+    gallery: [ContentfulAsset]
     id: ID!
     internal: Internal!
+    kontakt: String
     node_locale: String!
+    numberOfRooms: Int
     parent: Node
-    product: ContentfulProductProduct
     spaceId: String
-    sys: ContentfulProductSys
+    sys: ContentfulImmoEinAngebotSys
+    title: String
+    typeOfProperty: String
     updatedAt(
         "Returns the difference between this date and the current time. Defaults to \"milliseconds\" but you can also pass in as the measurement \"years\", \"months\", \"weeks\", \"days\", \"hours\", \"minutes\", and \"seconds\"."
         difference: String,
@@ -481,53 +545,49 @@ type ContentfulProduct implements ContentfulEntry & ContentfulReference & Node {
     ): Date
 }
 
-type ContentfulProductConnection {
-    distinct(field: ContentfulProductFieldSelector!): [String!]!
-    edges: [ContentfulProductEdge!]!
-    group(field: ContentfulProductFieldSelector!, limit: Int, skip: Int): [ContentfulProductGroupConnection!]!
-    max(field: ContentfulProductFieldSelector!): Float
-    min(field: ContentfulProductFieldSelector!): Float
-    nodes: [ContentfulProduct!]!
+type ContentfulImmoEinAngebotConnection {
+    distinct(field: ContentfulImmoEinAngebotFieldSelector!): [String!]!
+    edges: [ContentfulImmoEinAngebotEdge!]!
+    group(field: ContentfulImmoEinAngebotFieldSelector!, limit: Int, skip: Int): [ContentfulImmoEinAngebotGroupConnection!]!
+    max(field: ContentfulImmoEinAngebotFieldSelector!): Float
+    min(field: ContentfulImmoEinAngebotFieldSelector!): Float
+    nodes: [ContentfulImmoEinAngebot!]!
     pageInfo: PageInfo!
-    sum(field: ContentfulProductFieldSelector!): Float
+    sum(field: ContentfulImmoEinAngebotFieldSelector!): Float
     totalCount: Int!
 }
 
-type ContentfulProductEdge {
-    next: ContentfulProduct
-    node: ContentfulProduct!
-    previous: ContentfulProduct
+type ContentfulImmoEinAngebotEdge {
+    next: ContentfulImmoEinAngebot
+    node: ContentfulImmoEinAngebot!
+    previous: ContentfulImmoEinAngebot
 }
 
-type ContentfulProductGroupConnection {
-    distinct(field: ContentfulProductFieldSelector!): [String!]!
-    edges: [ContentfulProductEdge!]!
+type ContentfulImmoEinAngebotGroupConnection {
+    distinct(field: ContentfulImmoEinAngebotFieldSelector!): [String!]!
+    edges: [ContentfulImmoEinAngebotEdge!]!
     field: String!
     fieldValue: String
-    group(field: ContentfulProductFieldSelector!, limit: Int, skip: Int): [ContentfulProductGroupConnection!]!
-    max(field: ContentfulProductFieldSelector!): Float
-    min(field: ContentfulProductFieldSelector!): Float
-    nodes: [ContentfulProduct!]!
+    group(field: ContentfulImmoEinAngebotFieldSelector!, limit: Int, skip: Int): [ContentfulImmoEinAngebotGroupConnection!]!
+    max(field: ContentfulImmoEinAngebotFieldSelector!): Float
+    min(field: ContentfulImmoEinAngebotFieldSelector!): Float
+    nodes: [ContentfulImmoEinAngebot!]!
     pageInfo: PageInfo!
-    sum(field: ContentfulProductFieldSelector!): Float
+    sum(field: ContentfulImmoEinAngebotFieldSelector!): Float
     totalCount: Int!
 }
 
-type ContentfulProductProduct {
-    raw: String
-}
-
-type ContentfulProductSys {
-    contentType: ContentfulProductSysContentType
+type ContentfulImmoEinAngebotSys {
+    contentType: ContentfulImmoEinAngebotSysContentType
     revision: Int
     type: String
 }
 
-type ContentfulProductSysContentType {
-    sys: ContentfulProductSysContentTypeSys
+type ContentfulImmoEinAngebotSysContentType {
+    sys: ContentfulImmoEinAngebotSysContentTypeSys
 }
 
-type ContentfulProductSysContentTypeSys {
+type ContentfulImmoEinAngebotSysContentTypeSys {
     id: String
     linkType: String
     type: String
@@ -1028,7 +1088,8 @@ type Query {
     allContentfulAsset(filter: ContentfulAssetFilterInput, limit: Int, skip: Int, sort: [ContentfulAssetSortInput]): ContentfulAssetConnection!
     allContentfulContentType(filter: ContentfulContentTypeFilterInput, limit: Int, skip: Int, sort: [ContentfulContentTypeSortInput]): ContentfulContentTypeConnection!
     allContentfulEntry(filter: ContentfulEntryFilterInput, limit: Int, skip: Int, sort: [ContentfulEntrySortInput]): ContentfulEntryConnection!
-    allContentfulProduct(filter: ContentfulProductFilterInput, limit: Int, skip: Int, sort: [ContentfulProductSortInput]): ContentfulProductConnection!
+    allContentfulImmoEinAngebot(filter: ContentfulImmoEinAngebotFilterInput, limit: Int, skip: Int, sort: [ContentfulImmoEinAngebotSortInput]): ContentfulImmoEinAngebotConnection!
+    allContentfulImmoEinAngebotDescriptionTextNode(filter: contentfulImmoEinAngebotDescriptionTextNodeFilterInput, limit: Int, skip: Int, sort: [contentfulImmoEinAngebotDescriptionTextNodeSortInput]): contentfulImmoEinAngebotDescriptionTextNodeConnection!
     allDirectory(filter: DirectoryFilterInput, limit: Int, skip: Int, sort: [DirectorySortInput]): DirectoryConnection!
     allFile(filter: FileFilterInput, limit: Int, skip: Int, sort: [FileSortInput]): FileConnection!
     allImageSharp(filter: ImageSharpFilterInput, limit: Int, skip: Int, sort: [ImageSharpSortInput]): ImageSharpConnection!
@@ -1037,10 +1098,11 @@ type Query {
     allSiteFunction(filter: SiteFunctionFilterInput, limit: Int, skip: Int, sort: [SiteFunctionSortInput]): SiteFunctionConnection!
     allSitePage(filter: SitePageFilterInput, limit: Int, skip: Int, sort: [SitePageSortInput]): SitePageConnection!
     allSitePlugin(filter: SitePluginFilterInput, limit: Int, skip: Int, sort: [SitePluginSortInput]): SitePluginConnection!
-    contentfulAsset(children: NodeFilterListInput, contentful_id: StringQueryOperatorInput, filename: StringQueryOperatorInput, filesize: IntQueryOperatorInput, gatsbyImage: GatsbyImageDataQueryOperatorInput, gatsbyImageData: GatsbyImageDataQueryOperatorInput, height: IntQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, mimeType: StringQueryOperatorInput, parent: NodeFilterInput, publicUrl: StringQueryOperatorInput, resize: RemoteFileResizeFilterInput, width: IntQueryOperatorInput): ContentfulAsset
-    contentfulContentType(children: NodeFilterListInput, description: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, parent: NodeFilterInput, sys: ContentfulContentTypeSysFilterInput): ContentfulContentType
+    contentfulAsset(children: NodeFilterListInput, contentful_id: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, description: StringQueryOperatorInput, file: ContentfulAssetFileFilterInput, filename: StringQueryOperatorInput, filesize: IntQueryOperatorInput, gatsbyImage: GatsbyImageDataQueryOperatorInput, gatsbyImageData: GatsbyImageDataQueryOperatorInput, height: IntQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, mimeType: StringQueryOperatorInput, node_locale: StringQueryOperatorInput, parent: NodeFilterInput, placeholderUrl: StringQueryOperatorInput, publicUrl: StringQueryOperatorInput, resize: RemoteFileResizeFilterInput, size: IntQueryOperatorInput, spaceId: StringQueryOperatorInput, sys: ContentfulAssetSysFilterInput, title: StringQueryOperatorInput, updatedAt: DateQueryOperatorInput, url: StringQueryOperatorInput, width: IntQueryOperatorInput): ContentfulAsset
+    contentfulContentType(children: NodeFilterListInput, description: StringQueryOperatorInput, displayField: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, name: StringQueryOperatorInput, parent: NodeFilterInput, sys: ContentfulContentTypeSysFilterInput): ContentfulContentType
     contentfulEntry(children: NodeFilterListInput, contentful_id: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, node_locale: StringQueryOperatorInput, parent: NodeFilterInput): ContentfulEntry
-    contentfulProduct(children: NodeFilterListInput, contentful_id: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, node_locale: StringQueryOperatorInput, parent: NodeFilterInput, product: ContentfulProductProductFilterInput, spaceId: StringQueryOperatorInput, sys: ContentfulProductSysFilterInput, updatedAt: DateQueryOperatorInput): ContentfulProduct
+    contentfulImmoEinAngebot(address: StringQueryOperatorInput, areaM2: IntQueryOperatorInput, childContentfulImmoEinAngebotDescriptionTextNode: contentfulImmoEinAngebotDescriptionTextNodeFilterInput, children: NodeFilterListInput, childrenContentfulImmoEinAngebotDescriptionTextNode: contentfulImmoEinAngebotDescriptionTextNodeFilterListInput, condition: StringQueryOperatorInput, contentful_id: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, description: contentfulImmoEinAngebotDescriptionTextNodeFilterInput, gallery: ContentfulAssetFilterListInput, id: StringQueryOperatorInput, internal: InternalFilterInput, kontakt: StringQueryOperatorInput, node_locale: StringQueryOperatorInput, numberOfRooms: IntQueryOperatorInput, parent: NodeFilterInput, spaceId: StringQueryOperatorInput, sys: ContentfulImmoEinAngebotSysFilterInput, title: StringQueryOperatorInput, typeOfProperty: StringQueryOperatorInput, updatedAt: DateQueryOperatorInput): ContentfulImmoEinAngebot
+    contentfulImmoEinAngebotDescriptionTextNode(children: NodeFilterListInput, description: StringQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, parent: NodeFilterInput, sys: contentfulImmoEinAngebotDescriptionTextNodeSysFilterInput): contentfulImmoEinAngebotDescriptionTextNode
     directory(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, changeTime: DateQueryOperatorInput, children: NodeFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): Directory
     file(absolutePath: StringQueryOperatorInput, accessTime: DateQueryOperatorInput, atime: DateQueryOperatorInput, atimeMs: FloatQueryOperatorInput, base: StringQueryOperatorInput, birthTime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, changeTime: DateQueryOperatorInput, childImageSharp: ImageSharpFilterInput, children: NodeFilterListInput, childrenImageSharp: ImageSharpFilterListInput, ctime: DateQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, dev: IntQueryOperatorInput, dir: StringQueryOperatorInput, ext: StringQueryOperatorInput, extension: StringQueryOperatorInput, gid: IntQueryOperatorInput, id: StringQueryOperatorInput, ino: FloatQueryOperatorInput, internal: InternalFilterInput, mode: IntQueryOperatorInput, modifiedTime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, name: StringQueryOperatorInput, nlink: IntQueryOperatorInput, parent: NodeFilterInput, prettySize: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, rdev: IntQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, root: StringQueryOperatorInput, size: IntQueryOperatorInput, sourceInstanceName: StringQueryOperatorInput, uid: IntQueryOperatorInput): File
     imageSharp(children: NodeFilterListInput, fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, gatsbyImageData: GatsbyImageDataQueryOperatorInput, id: StringQueryOperatorInput, internal: InternalFilterInput, original: ImageSharpOriginalFilterInput, parent: NodeFilterInput, resize: ImageSharpResizeFilterInput): ImageSharp
@@ -1309,6 +1371,51 @@ type SiteSiteMetadata {
     title: String
 }
 
+type contentfulImmoEinAngebotDescriptionTextNode implements Node {
+    children: [Node!]!
+    description: String
+    id: ID!
+    internal: Internal!
+    parent: Node
+    sys: contentfulImmoEinAngebotDescriptionTextNodeSys
+}
+
+type contentfulImmoEinAngebotDescriptionTextNodeConnection {
+    distinct(field: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector!): [String!]!
+    edges: [contentfulImmoEinAngebotDescriptionTextNodeEdge!]!
+    group(field: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector!, limit: Int, skip: Int): [contentfulImmoEinAngebotDescriptionTextNodeGroupConnection!]!
+    max(field: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector!): Float
+    min(field: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector!): Float
+    nodes: [contentfulImmoEinAngebotDescriptionTextNode!]!
+    pageInfo: PageInfo!
+    sum(field: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector!): Float
+    totalCount: Int!
+}
+
+type contentfulImmoEinAngebotDescriptionTextNodeEdge {
+    next: contentfulImmoEinAngebotDescriptionTextNode
+    node: contentfulImmoEinAngebotDescriptionTextNode!
+    previous: contentfulImmoEinAngebotDescriptionTextNode
+}
+
+type contentfulImmoEinAngebotDescriptionTextNodeGroupConnection {
+    distinct(field: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector!): [String!]!
+    edges: [contentfulImmoEinAngebotDescriptionTextNodeEdge!]!
+    field: String!
+    fieldValue: String
+    group(field: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector!, limit: Int, skip: Int): [contentfulImmoEinAngebotDescriptionTextNodeGroupConnection!]!
+    max(field: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector!): Float
+    min(field: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector!): Float
+    nodes: [contentfulImmoEinAngebotDescriptionTextNode!]!
+    pageInfo: PageInfo!
+    sum(field: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector!): Float
+    totalCount: Int!
+}
+
+type contentfulImmoEinAngebotDescriptionTextNodeSys {
+    type: String
+}
+
 enum ContentfulImageCropFocus {
     BOTTOM
     BOTTOM_LEFT
@@ -1491,6 +1598,9 @@ input BooleanQueryOperatorInput {
 input ContentfulAssetFieldSelector {
     children: NodeFieldSelector
     contentful_id: FieldSelectorEnum
+    createdAt: FieldSelectorEnum
+    description: FieldSelectorEnum
+    file: ContentfulAssetFileFieldSelector
     filename: FieldSelectorEnum
     filesize: FieldSelectorEnum
     gatsbyImage: FieldSelectorEnum
@@ -1499,15 +1609,77 @@ input ContentfulAssetFieldSelector {
     id: FieldSelectorEnum
     internal: InternalFieldSelector
     mimeType: FieldSelectorEnum
+    node_locale: FieldSelectorEnum
     parent: NodeFieldSelector
+    placeholderUrl: FieldSelectorEnum
     publicUrl: FieldSelectorEnum
     resize: RemoteFileResizeFieldSelector
+    size: FieldSelectorEnum
+    spaceId: FieldSelectorEnum
+    sys: ContentfulAssetSysFieldSelector
+    title: FieldSelectorEnum
+    updatedAt: FieldSelectorEnum
+    url: FieldSelectorEnum
     width: FieldSelectorEnum
+}
+
+input ContentfulAssetFileDetailsFieldSelector {
+    image: ContentfulAssetFileDetailsImageFieldSelector
+    size: FieldSelectorEnum
+}
+
+input ContentfulAssetFileDetailsFilterInput {
+    image: ContentfulAssetFileDetailsImageFilterInput
+    size: IntQueryOperatorInput
+}
+
+input ContentfulAssetFileDetailsImageFieldSelector {
+    height: FieldSelectorEnum
+    width: FieldSelectorEnum
+}
+
+input ContentfulAssetFileDetailsImageFilterInput {
+    height: IntQueryOperatorInput
+    width: IntQueryOperatorInput
+}
+
+input ContentfulAssetFileDetailsImageSortInput {
+    height: SortOrderEnum
+    width: SortOrderEnum
+}
+
+input ContentfulAssetFileDetailsSortInput {
+    image: ContentfulAssetFileDetailsImageSortInput
+    size: SortOrderEnum
+}
+
+input ContentfulAssetFileFieldSelector {
+    contentType: FieldSelectorEnum
+    details: ContentfulAssetFileDetailsFieldSelector
+    fileName: FieldSelectorEnum
+    url: FieldSelectorEnum
+}
+
+input ContentfulAssetFileFilterInput {
+    contentType: StringQueryOperatorInput
+    details: ContentfulAssetFileDetailsFilterInput
+    fileName: StringQueryOperatorInput
+    url: StringQueryOperatorInput
+}
+
+input ContentfulAssetFileSortInput {
+    contentType: SortOrderEnum
+    details: ContentfulAssetFileDetailsSortInput
+    fileName: SortOrderEnum
+    url: SortOrderEnum
 }
 
 input ContentfulAssetFilterInput {
     children: NodeFilterListInput
     contentful_id: StringQueryOperatorInput
+    createdAt: DateQueryOperatorInput
+    description: StringQueryOperatorInput
+    file: ContentfulAssetFileFilterInput
     filename: StringQueryOperatorInput
     filesize: IntQueryOperatorInput
     gatsbyImage: GatsbyImageDataQueryOperatorInput
@@ -1516,15 +1688,30 @@ input ContentfulAssetFilterInput {
     id: StringQueryOperatorInput
     internal: InternalFilterInput
     mimeType: StringQueryOperatorInput
+    node_locale: StringQueryOperatorInput
     parent: NodeFilterInput
+    placeholderUrl: StringQueryOperatorInput
     publicUrl: StringQueryOperatorInput
     resize: RemoteFileResizeFilterInput
+    size: IntQueryOperatorInput
+    spaceId: StringQueryOperatorInput
+    sys: ContentfulAssetSysFilterInput
+    title: StringQueryOperatorInput
+    updatedAt: DateQueryOperatorInput
+    url: StringQueryOperatorInput
     width: IntQueryOperatorInput
+}
+
+input ContentfulAssetFilterListInput {
+    elemMatch: ContentfulAssetFilterInput
 }
 
 input ContentfulAssetSortInput {
     children: NodeSortInput
     contentful_id: SortOrderEnum
+    createdAt: SortOrderEnum
+    description: SortOrderEnum
+    file: ContentfulAssetFileSortInput
     filename: SortOrderEnum
     filesize: SortOrderEnum
     gatsbyImage: SortOrderEnum
@@ -1533,15 +1720,39 @@ input ContentfulAssetSortInput {
     id: SortOrderEnum
     internal: InternalSortInput
     mimeType: SortOrderEnum
+    node_locale: SortOrderEnum
     parent: NodeSortInput
+    placeholderUrl: SortOrderEnum
     publicUrl: SortOrderEnum
     resize: RemoteFileResizeSortInput
+    size: SortOrderEnum
+    spaceId: SortOrderEnum
+    sys: ContentfulAssetSysSortInput
+    title: SortOrderEnum
+    updatedAt: SortOrderEnum
+    url: SortOrderEnum
     width: SortOrderEnum
+}
+
+input ContentfulAssetSysFieldSelector {
+    revision: FieldSelectorEnum
+    type: FieldSelectorEnum
+}
+
+input ContentfulAssetSysFilterInput {
+    revision: IntQueryOperatorInput
+    type: StringQueryOperatorInput
+}
+
+input ContentfulAssetSysSortInput {
+    revision: SortOrderEnum
+    type: SortOrderEnum
 }
 
 input ContentfulContentTypeFieldSelector {
     children: NodeFieldSelector
     description: FieldSelectorEnum
+    displayField: FieldSelectorEnum
     id: FieldSelectorEnum
     internal: InternalFieldSelector
     name: FieldSelectorEnum
@@ -1552,6 +1763,7 @@ input ContentfulContentTypeFieldSelector {
 input ContentfulContentTypeFilterInput {
     children: NodeFilterListInput
     description: StringQueryOperatorInput
+    displayField: StringQueryOperatorInput
     id: StringQueryOperatorInput
     internal: InternalFilterInput
     name: StringQueryOperatorInput
@@ -1562,6 +1774,7 @@ input ContentfulContentTypeFilterInput {
 input ContentfulContentTypeSortInput {
     children: NodeSortInput
     description: SortOrderEnum
+    displayField: SortOrderEnum
     id: SortOrderEnum
     internal: InternalSortInput
     name: SortOrderEnum
@@ -1608,104 +1821,122 @@ input ContentfulEntrySortInput {
     parent: NodeSortInput
 }
 
-input ContentfulProductFieldSelector {
+input ContentfulImmoEinAngebotFieldSelector {
+    address: FieldSelectorEnum
+    areaM2: FieldSelectorEnum
+    childContentfulImmoEinAngebotDescriptionTextNode: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector
     children: NodeFieldSelector
+    childrenContentfulImmoEinAngebotDescriptionTextNode: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector
+    condition: FieldSelectorEnum
     contentful_id: FieldSelectorEnum
     createdAt: FieldSelectorEnum
+    description: contentfulImmoEinAngebotDescriptionTextNodeFieldSelector
+    gallery: ContentfulAssetFieldSelector
     id: FieldSelectorEnum
     internal: InternalFieldSelector
+    kontakt: FieldSelectorEnum
     node_locale: FieldSelectorEnum
+    numberOfRooms: FieldSelectorEnum
     parent: NodeFieldSelector
-    product: ContentfulProductProductFieldSelector
     spaceId: FieldSelectorEnum
-    sys: ContentfulProductSysFieldSelector
+    sys: ContentfulImmoEinAngebotSysFieldSelector
+    title: FieldSelectorEnum
+    typeOfProperty: FieldSelectorEnum
     updatedAt: FieldSelectorEnum
 }
 
-input ContentfulProductFilterInput {
+input ContentfulImmoEinAngebotFilterInput {
+    address: StringQueryOperatorInput
+    areaM2: IntQueryOperatorInput
+    childContentfulImmoEinAngebotDescriptionTextNode: contentfulImmoEinAngebotDescriptionTextNodeFilterInput
     children: NodeFilterListInput
+    childrenContentfulImmoEinAngebotDescriptionTextNode: contentfulImmoEinAngebotDescriptionTextNodeFilterListInput
+    condition: StringQueryOperatorInput
     contentful_id: StringQueryOperatorInput
     createdAt: DateQueryOperatorInput
+    description: contentfulImmoEinAngebotDescriptionTextNodeFilterInput
+    gallery: ContentfulAssetFilterListInput
     id: StringQueryOperatorInput
     internal: InternalFilterInput
+    kontakt: StringQueryOperatorInput
     node_locale: StringQueryOperatorInput
+    numberOfRooms: IntQueryOperatorInput
     parent: NodeFilterInput
-    product: ContentfulProductProductFilterInput
     spaceId: StringQueryOperatorInput
-    sys: ContentfulProductSysFilterInput
+    sys: ContentfulImmoEinAngebotSysFilterInput
+    title: StringQueryOperatorInput
+    typeOfProperty: StringQueryOperatorInput
     updatedAt: DateQueryOperatorInput
 }
 
-input ContentfulProductProductFieldSelector {
-    raw: FieldSelectorEnum
-}
-
-input ContentfulProductProductFilterInput {
-    raw: StringQueryOperatorInput
-}
-
-input ContentfulProductProductSortInput {
-    raw: SortOrderEnum
-}
-
-input ContentfulProductSortInput {
+input ContentfulImmoEinAngebotSortInput {
+    address: SortOrderEnum
+    areaM2: SortOrderEnum
+    childContentfulImmoEinAngebotDescriptionTextNode: contentfulImmoEinAngebotDescriptionTextNodeSortInput
     children: NodeSortInput
+    childrenContentfulImmoEinAngebotDescriptionTextNode: contentfulImmoEinAngebotDescriptionTextNodeSortInput
+    condition: SortOrderEnum
     contentful_id: SortOrderEnum
     createdAt: SortOrderEnum
+    description: contentfulImmoEinAngebotDescriptionTextNodeSortInput
+    gallery: ContentfulAssetSortInput
     id: SortOrderEnum
     internal: InternalSortInput
+    kontakt: SortOrderEnum
     node_locale: SortOrderEnum
+    numberOfRooms: SortOrderEnum
     parent: NodeSortInput
-    product: ContentfulProductProductSortInput
     spaceId: SortOrderEnum
-    sys: ContentfulProductSysSortInput
+    sys: ContentfulImmoEinAngebotSysSortInput
+    title: SortOrderEnum
+    typeOfProperty: SortOrderEnum
     updatedAt: SortOrderEnum
 }
 
-input ContentfulProductSysContentTypeFieldSelector {
-    sys: ContentfulProductSysContentTypeSysFieldSelector
+input ContentfulImmoEinAngebotSysContentTypeFieldSelector {
+    sys: ContentfulImmoEinAngebotSysContentTypeSysFieldSelector
 }
 
-input ContentfulProductSysContentTypeFilterInput {
-    sys: ContentfulProductSysContentTypeSysFilterInput
+input ContentfulImmoEinAngebotSysContentTypeFilterInput {
+    sys: ContentfulImmoEinAngebotSysContentTypeSysFilterInput
 }
 
-input ContentfulProductSysContentTypeSortInput {
-    sys: ContentfulProductSysContentTypeSysSortInput
+input ContentfulImmoEinAngebotSysContentTypeSortInput {
+    sys: ContentfulImmoEinAngebotSysContentTypeSysSortInput
 }
 
-input ContentfulProductSysContentTypeSysFieldSelector {
+input ContentfulImmoEinAngebotSysContentTypeSysFieldSelector {
     id: FieldSelectorEnum
     linkType: FieldSelectorEnum
     type: FieldSelectorEnum
 }
 
-input ContentfulProductSysContentTypeSysFilterInput {
+input ContentfulImmoEinAngebotSysContentTypeSysFilterInput {
     id: StringQueryOperatorInput
     linkType: StringQueryOperatorInput
     type: StringQueryOperatorInput
 }
 
-input ContentfulProductSysContentTypeSysSortInput {
+input ContentfulImmoEinAngebotSysContentTypeSysSortInput {
     id: SortOrderEnum
     linkType: SortOrderEnum
     type: SortOrderEnum
 }
 
-input ContentfulProductSysFieldSelector {
-    contentType: ContentfulProductSysContentTypeFieldSelector
+input ContentfulImmoEinAngebotSysFieldSelector {
+    contentType: ContentfulImmoEinAngebotSysContentTypeFieldSelector
     revision: FieldSelectorEnum
     type: FieldSelectorEnum
 }
 
-input ContentfulProductSysFilterInput {
-    contentType: ContentfulProductSysContentTypeFilterInput
+input ContentfulImmoEinAngebotSysFilterInput {
+    contentType: ContentfulImmoEinAngebotSysContentTypeFilterInput
     revision: IntQueryOperatorInput
     type: StringQueryOperatorInput
 }
 
-input ContentfulProductSysSortInput {
-    contentType: ContentfulProductSysContentTypeSortInput
+input ContentfulImmoEinAngebotSysSortInput {
+    contentType: ContentfulImmoEinAngebotSysContentTypeSortInput
     revision: SortOrderEnum
     type: SortOrderEnum
 }
@@ -2520,4 +2751,47 @@ input TransformOptions {
 
 input WebPOptions {
     quality: Int
+}
+
+input contentfulImmoEinAngebotDescriptionTextNodeFieldSelector {
+    children: NodeFieldSelector
+    description: FieldSelectorEnum
+    id: FieldSelectorEnum
+    internal: InternalFieldSelector
+    parent: NodeFieldSelector
+    sys: contentfulImmoEinAngebotDescriptionTextNodeSysFieldSelector
+}
+
+input contentfulImmoEinAngebotDescriptionTextNodeFilterInput {
+    children: NodeFilterListInput
+    description: StringQueryOperatorInput
+    id: StringQueryOperatorInput
+    internal: InternalFilterInput
+    parent: NodeFilterInput
+    sys: contentfulImmoEinAngebotDescriptionTextNodeSysFilterInput
+}
+
+input contentfulImmoEinAngebotDescriptionTextNodeFilterListInput {
+    elemMatch: contentfulImmoEinAngebotDescriptionTextNodeFilterInput
+}
+
+input contentfulImmoEinAngebotDescriptionTextNodeSortInput {
+    children: NodeSortInput
+    description: SortOrderEnum
+    id: SortOrderEnum
+    internal: InternalSortInput
+    parent: NodeSortInput
+    sys: contentfulImmoEinAngebotDescriptionTextNodeSysSortInput
+}
+
+input contentfulImmoEinAngebotDescriptionTextNodeSysFieldSelector {
+    type: FieldSelectorEnum
+}
+
+input contentfulImmoEinAngebotDescriptionTextNodeSysFilterInput {
+    type: StringQueryOperatorInput
+}
+
+input contentfulImmoEinAngebotDescriptionTextNodeSysSortInput {
+    type: SortOrderEnum
 }

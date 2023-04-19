@@ -1,5 +1,5 @@
 {
-  "name": "Immobilien Schema",
+  "name": "Gatsby-Immobilien",
   "schemaPath": "schema.graphql",
   "extensions": {
     "endpoints": {
