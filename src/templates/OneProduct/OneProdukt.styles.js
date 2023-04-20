@@ -18,6 +18,21 @@ export const Address = styled.p`
   }
 `;
 
+export const OfferTitle = styled.div`
+  padding: 10px 25px;
+  h2{
+    font-size: calc(${({ theme }) => theme.font.size.headingSmall} * (0.65));
+    margin: 20px 0 5px;
+  }
+  ${StyledHeading}::before {    
+    height: calc(${({ theme }) => theme.font.size.headingSmall} * .8);
+    top: -2px;
+  }
+  ${({ theme }) => theme.mq.desktop} {
+    margin-bottom: 30px;   
+  }
+`;
+
 export const OfferDetailsList = styled.ul`
   list-style: none;
   padding: 0 25px;
@@ -59,34 +74,9 @@ export const Gallery = styled.div`
 
 export const OfferDescription = styled.p`
   position: relative;
-  padding: 10px 25px;
-  ${({ theme }) => theme.mq.desktop} {
-    top: -60px;
-  }
-
-  ${({ theme }) => theme.mq.bigDesktop} {
-    top: -70px;
-  }
-
-  ${({ theme }) => theme.mq.huge} {
-    top: -90px;
-  }
+  padding: 10px 25px;  
 `;
 
-export const OfferTitle = styled.div`
-  padding: 10px 25px;
-  h2{
-    font-size: calc(${({ theme }) => theme.font.size.headingSmall} * (0.65));
-    margin: 20px 0 5px;
-  }
-  ${StyledHeading}::before {    
-    height: calc(${({ theme }) => theme.font.size.headingSmall} * .8);
-    top: -2px;
-  }
-  ${({ theme }) => theme.mq.desktop} {
-    margin-bottom: 30px;   
-  }
-`;
 
 export const StyledContentWrapper = styled.div`
   margin: 80px 0;
@@ -94,7 +84,6 @@ export const StyledContentWrapper = styled.div`
   grid-template-columns: 1fr;
   width: 100%;
   min-height: 100vh;
-  //margin-top: 130px;
   z-index: -1;
 
   ${({ theme }) => theme.mq.desktop} {
@@ -107,12 +96,13 @@ export const StyledContentWrapper = styled.div`
 
     ${Gallery} {
       grid-row: 1 / 2;
-      grid-column: 1 / 3;
+      grid-row: 2 / 3;
     }
 
     ${OfferTitle} {
       grid-column: 1 / 2;
-      grid-row: 2 / 3;      
+      
+      grid-column: 1 / 3;
     }
 
     ${OfferDescription} {
@@ -122,14 +112,13 @@ export const StyledContentWrapper = styled.div`
 
     ${OfferDetailsList} {
       grid-column: 2 / 3;
-      grid-row: 2 / 4;
+      grid-row: 2 / 3;
     }
 
     ${ContactDetailsWrapper} {
-      grid-column: 1 / 2;
-      grid-row: 4 / 5;
-      position: absolute;
-      top: -40px;
+      grid-column: 2 / 3;
+      grid-row: 3 /4;
+      margin: 0  auto auto;
     }
   }
 `;
