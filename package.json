@@ -15,6 +15,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@formspree/react": "^2.4.1",
     "babel-plugin-styled-components": "^2.1.1",
     "gatsby": "^5.8.1",
     "gatsby-link": "^5.8.0",

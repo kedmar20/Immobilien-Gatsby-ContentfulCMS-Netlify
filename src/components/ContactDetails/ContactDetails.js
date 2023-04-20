@@ -1,6 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import {graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import {useStaticQuery, graphql } from 'gatsby';
 import { ContactDetailsWrapper } from './ContactDetails.styles';
 
 export const contactData = {
@@ -9,7 +9,7 @@ export const contactData = {
         email: 'steven@muster-immobilien.de',
         phone: '+49 176 0000000',
     },
-    anna: {
+    heike: {
         name: 'Heike Seiler',
         email: 'heike@muster-immobilien.de ',
         phone: '+49 176 0000000',
@@ -26,39 +26,43 @@ export const contactData = {
     },
 };
 
-export const ContactDetails = ({avatarImages}) => {
-    // const data = useStaticQuery(graphql`
-    //     query {
-    //         anna: file(relativePath: {regex: "/zespol\/1_ania.jpg/"}) {
-    //             publicURL
-    //         },
-    //         amanda: file(relativePath: {regex: "/zespol\/2_amanda.jpg/"}) {
-    //             publicURL
-    //         },
-    //         kamila: file(relativePath: {regex: "/zespol\/3_kamila.jpg/"}) {
-    //             publicURL
-    //         },
-    //         marta: file(relativePath: {regex: "/zespol\/4_marta.jpg/"}) {
-    //             publicURL
-    //         },
-    //         patrycja: file(relativePath: {regex: "/zespol\/5_patrycja.jpg/"}) {
-    //             publicURL
-    //         },
-    //     }`);
+export const ContactDetails = ({contact = 'heike'}) => {
+
+    contact = contact.toLowerCase();
+
+    const data = useStaticQuery(graphql`
+        query {
+            heike: file(relativePath: {regex: "/wir\/heike.jpg/"}) {
+                publicURL
+            },
+            martina: file(relativePath: {regex: "/wir\/martina.jpg/"}) {
+                publicURL
+            },
+            peter: file(relativePath: {regex: "/wir\/peter.jpg/"}) {
+                publicURL
+            },
+            steven: file(relativePath: {regex: "/wir\/simon.jpg/"}) {
+                publicURL
+            },
+        }`);
 
     return (
         <ContactDetailsWrapper>
-            <img src={avatarImages} alt="" />
+            {/*{console.log(contact)}*/}
+            {/*{console.log(contactData[contact].email)}*/}
+            {/*{console.log(data)}*/}
+            {/*{console.log(data[contact].publicURL)}*/}
+            <img src={data[contact].publicURL} alt="" />
             <div>
                 <p>Kontakt:</p>
-                <p>{contactData.anna.name}</p>
-                <p>{contactData.anna.email}</p>
-                <p>{contactData.anna.phone}</p>
+                <p>{contactData[contact].name}</p>
+                <p>{contactData[contact].email}</p>
+                <p>{contactData[contact].phone}</p>
             </div>
         </ContactDetailsWrapper>
     );
-};
 
-// ContactDetails.propTyopes = {
-//     contact: PropTypes.oneOf(['anna', 'amanda', 'kamila', 'patrycja', 'marta']).isRequired,
-// };
+};
+ContactDetails.propTyopes = {
+    contact: PropTypes.oneOf(['heike', 'martina', 'peter', 'steven']).isRequired,
+};
