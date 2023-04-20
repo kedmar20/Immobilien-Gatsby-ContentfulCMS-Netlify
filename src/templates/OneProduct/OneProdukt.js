@@ -66,7 +66,7 @@ const OneProdukt = ({data:{avatar, immos}}) => (
                 </div>
             </li>
         </OfferDetailsList>
-        <ContactDetails avatarImages={avatar.publicURL} />
+        <ContactDetails contact={immos.kontakt} />
     </StyledContentWrapper>
 );
 
