@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { graphql } from 'gatsby';
 import AreaIcon from 'assets/icons/area.svg';
 import AvailabilityIcon from 'assets/icons/availability.svg';
 import OfferTypeIcon from 'assets/icons/offer-type.svg';
@@ -14,33 +14,34 @@ import {
 import { ContactDetails } from 'components/ContactDetails/ContactDetails';
 import {HighlightedHeading} from 'components/HighlightedHeading/HighlightedHeading';
 
-const OneProdukt = ({data}) => (
+const OneProdukt = ({data:{avatar, immos}}) => (
     <StyledContentWrapper>
         <OfferTitle>
-            <Address>Musterstraße 51</Address>
-            <HighlightedHeading>GRÜN UND GEHOBEN WOHNEN – 2-ZIMMER-WOHNUNG MIT SONNENDECK-BALKON</HighlightedHeading>
+            <Address>{immos.address}</Address>
+            <HighlightedHeading>{immos.title}</HighlightedHeading>
         </OfferTitle>
         <Gallery>
+            {console.log(immos)}
 
-<img src={data.product1.publicURL} alt={""}/>
+            <img src={immos.gallery[0].url} alt={""}/>
 
         </Gallery>
         <OfferDescription>
-            Sie wohnen in diesem gut geschnittenen Zwei-Zimmer-Appartement allein oder mit geschickter Einrichtung des Schlafzimmers komfortabel zu zweit. Der Boden aus Echtholzparkett bedeckt die gesamte Wohnfläche und ist mit einer...
+            {immos.description.description}
         </OfferDescription>
         <OfferDetailsList>
             <li>
                 <BuildingTypeIcon />
                 <div>
                     <p>Objekttyp:</p>
-                    <p>Wohnung</p>
+                    <p>{immos.typeOfProperty}</p>
                 </div>
             </li>
             <li>
                 <RoomsIcon />
                 <div>
                     <p>Zimmer:</p>
-                    <p>4+2 Badezimmer </p>
+                    <p>{immos.numberOfRooms}</p>
                 </div>
             </li>
             <li>
@@ -54,21 +55,42 @@ const OneProdukt = ({data}) => (
                 <AreaIcon />
                 <div>
                     <p>Wohnfläche:</p>
-                    <p>95 m2</p>
+                    <p>{immos.areaM2} m2</p>
                 </div>
             </li>
             <li>
                 <OfferTypeIcon />
                 <div>
                     <p>Zustand:</p>
-                    <p>gepflegt</p>
+                    <p>{immos.condition}</p>
                 </div>
             </li>
         </OfferDetailsList>
-        <ContactDetails avatarImages={data.avatar.publicURL} />
+        <ContactDetails avatarImages={avatar.publicURL} />
     </StyledContentWrapper>
 );
 
-
+export const query = graphql`
+    query MyQuery($id: String)  {
+        immos: contentfulImmoEinAngebot(id: {eq: $id}) {
+            address
+            areaM2
+            condition
+            description {
+                description
+            }
+            id
+            gallery {
+                url
+            }
+            kontakt
+            title
+            typeOfProperty
+            numberOfRooms
+        },
+        avatar: file(relativePath: {regex: "/product\/avatar.png/"}) {
+            publicURL
+        },
+    }`;
 
 export default OneProdukt;
