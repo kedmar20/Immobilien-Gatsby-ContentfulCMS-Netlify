@@ -17,6 +17,7 @@
   "dependencies": {
     "@formspree/react": "^2.4.1",
     "babel-plugin-styled-components": "^2.1.1",
+    "deepmerge": "^4.3.1",
     "gatsby": "^5.8.1",
     "gatsby-link": "^5.8.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
