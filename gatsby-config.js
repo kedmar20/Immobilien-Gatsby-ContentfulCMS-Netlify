@@ -30,7 +30,7 @@ module.exports = {
         "accessToken": "dlPhTF-pQf9pmV3suIAyFGj_wdxQKqj-eTp97u3qbco",
         "spaceId": "fhon8lg5vg0c"
       }
-    }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-styled-components", "gatsby-plugin-google-gtag", "gatsby-plugin-sitemap", {
+    }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-styled-components", "gatsby-plugin-sitemap", {
       resolve: 'gatsby-plugin-manifest',
       options: {
         "icon": "src/assets/images/icon.png"
