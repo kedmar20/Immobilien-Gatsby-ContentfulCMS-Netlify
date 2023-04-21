@@ -13,7 +13,7 @@ export const MainWrapperImmobilien = styled.section`
   ${({ theme }) => theme.mq.desktop} {
     max-width: 1920px;
     margin: 0 auto 0 auto;
-    padding: 180px 100px;
+    padding: 180px 100px 50px 100px;
 `;
 
 export const IntroSection = styled.section`
@@ -48,6 +48,7 @@ export const FiltersList = styled.ul`
   li {
     padding: 10px 0;
     font-weight: 700;
+    color: black;
   }
   
   li:first-child {

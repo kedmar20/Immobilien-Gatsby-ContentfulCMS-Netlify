@@ -66,9 +66,36 @@ export const OfferDetailsList = styled.ul`
 `;
 
 export const Gallery = styled.div`
+  display: flex;
+  flex-direction: column;
+  //border: hotpink solid 2px;
+  //  max-height: 80vh;
+  height: 60vh;
+  //border: green solid 2px;
+  //margin-bottom: 20px;
+  
+  &>div{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    //border: blue solid 2px;
+    &>div:first-child{
+      //border: red solid 2px;
+      height: 80%;
+      &>div img{
+        //border: red solid 6px;
+        height: 50vh;
+        //object-fit: contain;
+      }
+    }
+    }
+    &>div:last-child{
+      //background-color: yellow;
+      //height: 80%
+  }
   img{
-    width: 100%;
     object-fit: cover;
+    width: 100%;
   }
 `;
 
@@ -84,25 +111,25 @@ export const StyledContentWrapper = styled.div`
   grid-template-columns: 1fr;
   width: 100%;
   min-height: 100vh;
-  z-index: -1;
+  //z-index: -1;
 
   ${({ theme }) => theme.mq.desktop} {
     max-width: 1920px;
     margin: 0 auto 0 auto;
-    padding: 180px 100px;
+    padding: 180px 100px 50px 100px;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 40px;
     position: relative;
 
     ${Gallery} {
-      grid-row: 1 / 2;
+      grid-column: 1 / 2;
       grid-row: 2 / 3;
     }
 
     ${OfferTitle} {
       grid-column: 1 / 2;
       
-      grid-column: 1 / 3;
+      grid-row: 1 / 2;
     }
 
     ${OfferDescription} {

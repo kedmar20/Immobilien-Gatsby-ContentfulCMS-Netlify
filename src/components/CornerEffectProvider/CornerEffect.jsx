@@ -55,5 +55,4 @@ CornerEffect.propTypes = {
     color: PropTypes.oneOf(['beige', 'steel', 'dark']),
     pseudoelement: PropTypes.oneOf(['after', 'before']),
     distance: PropTypes.string,
-    children: PropTypes.node.isRequired,
 };

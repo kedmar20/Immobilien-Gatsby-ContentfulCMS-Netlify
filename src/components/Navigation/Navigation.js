@@ -37,8 +37,8 @@ export const Navigation = () => {
                     </ul>
                 </StyledNavigation>
                 <div>
-                    <StyledIcon isDark><Link to="https://www.facebook.com/"><FacebookIcon/></Link></StyledIcon>
-                    <StyledIcon isDark><Link to="https://www.instagram.com/"><InstagramIcon/></Link></StyledIcon>
+                    <StyledIcon as="a" href="https://www.facebook.com/" target="_blank" isDark><FacebookIcon/></StyledIcon>
+                    <StyledIcon as="a" href="https://www.instagram.com/" target="_blank" isDark><InstagramIcon/></StyledIcon>
                 </div>
             </WrapperNavigation>
         </OuterWrapperNavigation>

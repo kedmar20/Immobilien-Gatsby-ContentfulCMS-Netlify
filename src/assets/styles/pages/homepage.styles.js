@@ -1,10 +1,22 @@
 import styled from 'styled-components';
 import { CornerEffect } from '../../../components/CornerEffectProvider/CornerEffect';
 import { Link } from 'gatsby';
-import fb from '../../../assets/icons/fb.svg';
-import arrowIcon from '../../../assets/icons/arrow.svg';
+// import arrowIcon from '../../../assets/icons/arrow.svg';
 import {StyledList} from "../../../components/StyledList/StyledList.styles";
 
+export const MainWrapper = styled.div`
+  font-family: ${({ theme }) => theme.font.family.montserrat};
+  width: 100vw;
+  min-height: 100vh;
+  //margin-top: 130px;
+  z-index: -1;
+
+  ${({ theme }) => theme.mq.desktop} {
+    max-width: 1920px;
+    margin: 0 auto 0 auto;
+    padding: 180px 100px 5px 100px;
+  }
+`
 
 export const Hero = styled.div`
   background-image: url("${({ imageSource }) => imageSource}");
@@ -293,21 +305,6 @@ export const StyledLinkButton = styled(Link)`
   position: relative;
   display: inline-block;
   margin: 5px 0 10px;
-
-  &::after {
-    position: absolute;
-    content: '';
-    border: red solid 3px;
-    background-image: url("${arrowIcon}");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 0 50%;
-    width: 20px;
-    height: 20px;
-    //right: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
 `;
 
 export const ServicesSection = styled(StyledSection)`

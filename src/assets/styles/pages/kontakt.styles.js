@@ -37,7 +37,7 @@ export const ContactContentWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0 100px;
-    margin: 180px 65px;
+    margin: 180px 65px 10px 65px;
     
     ${ContactFormWrapper} {
       width: 100% !important;
