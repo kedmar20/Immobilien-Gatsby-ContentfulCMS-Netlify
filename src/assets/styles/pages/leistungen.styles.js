@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import arrowIcon from '../../icons/arrow.svg';
 import { StyledList } from '../../../components/StyledList/StyledList.styles';
 
 export const Hero = styled.div`
@@ -45,20 +44,6 @@ export const HeroInfo = styled.div`
     font-weight: 700;
     position: relative;
     left: 10px;    
-
-    &::before {
-      position: absolute;
-      content: '';      
-      background-image: url("${arrowIcon}");
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: 0 50%;
-      left: -30px;
-      top: 50%;
-      transform: translateY(-50%) rotate(90deg);
-      width: 20px;
-      height: 100%;   
-    }
   }
   
   ${({ theme }) => theme.mq.desktop} {
@@ -121,7 +106,6 @@ export const ServicesStyledList = styled(StyledList)`
   ${({ theme }) => theme.mq.desktop} {
     grid-template-rows: repeat(2, 1fr)
     margin: 0 85px;
-    border: yellow solid 2px;
   }
 `;
 

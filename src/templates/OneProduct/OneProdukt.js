@@ -11,8 +11,16 @@ import {
     OfferTitle,
     StyledContentWrapper,
 } from './OneProdukt.styles';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 import { ContactDetails } from 'components/ContactDetails/ContactDetails';
 import {HighlightedHeading} from 'components/HighlightedHeading/HighlightedHeading';
+
+const galleryOptions = {
+    showStatus: true,
+    showThumbs: true,
+    infiniteLoop: true,
+};
 
 const OneProdukt = ({data:{avatar, immos}}) => (
     <StyledContentWrapper>
@@ -21,9 +29,13 @@ const OneProdukt = ({data:{avatar, immos}}) => (
             <HighlightedHeading>{immos.title}</HighlightedHeading>
         </OfferTitle>
         <Gallery>
-            {console.log(immos)}
+            <Carousel >
+                {(immos.gallery).map((item) => (
+                    <img src={item.url} key={item.url} alt="" />
+                ))}
+            </Carousel>
 
-            <img src={immos.gallery[0].url} alt={""}/>
+            {/*<img src={immos.gallery[0].url} alt={""}/>*/}
 
         </Gallery>
         <OfferDescription>

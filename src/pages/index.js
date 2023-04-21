@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components";
 import { graphql, Link } from 'gatsby';
 import { HighlightedHeading } from 'components/HighlightedHeading/HighlightedHeading';
 import {
@@ -17,6 +16,7 @@ import {
     WelcomeSectionContent,
     WelcomeSectionImage,
     ContactSection,
+    MainWrapper
 } from 'assets/styles/pages/homepage.styles';
 import { StyledList } from 'components/StyledList/StyledList.styles';
 import { ContactForm } from '../components/ContactForm/ContactForm';
@@ -89,7 +89,7 @@ const IndexPage = ({data}) => {
                 <ShowcaseImage isBig src={data.grid2.publicURL} alt="#" />
                 <ShowcaseImage src={data.grid3.publicURL} alt="#" />
                 <ShowcaseImage isBig src={data.grid4.publicURL} alt="#" />
-                {console.log(window.innerWidth)}
+                {/*{console.log(window.innerWidth)}*/}
                 {(window.innerWidth>1100) ? (
                 <ShowcaseCorner position="bottomLeft" size="100px" distance="30px" color="beige" />):''}
                 {(window.innerWidth>1100) ? (
@@ -176,20 +176,6 @@ const IndexPage = ({data}) => {
   )
 }
 
-export const MainWrapper = styled.div`
- // background-color: ${({theme})=>theme.colors.steel};
-  font-family: ${({ theme }) => theme.font.family.montserrat};
-  width: 100vw;
-  min-height: 100vh;
-  //margin-top: 130px;
-  z-index: -1;
-
-  ${({ theme }) => theme.mq.desktop} {
-    max-width: 1920px;
-    margin: 0 auto 0 auto;
-    padding: 180px 100px;
-  }
-`
 export const query = graphql`
     query {
         hero: file(relativePath: {regex: "/homepage\/0_hero.jpg/"}) {
@@ -220,7 +206,7 @@ export const query = graphql`
 
 
 
+export const Head = () => <title>Home Page</title>
 
 export default IndexPage
 
-export const Head = () => <title>Home Page</title>

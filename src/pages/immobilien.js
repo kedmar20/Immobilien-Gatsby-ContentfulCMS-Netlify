@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from "react"
+import { Link } from 'gatsby';
 import { HighlightedHeading } from 'components/HighlightedHeading/HighlightedHeading';
 import { graphql } from 'gatsby';
 import {
@@ -19,10 +20,10 @@ const Immobilien = ({data: {allContentfulImmoEinAngebot: {nodes: immos}}}) => {
                     Sie interessiert.
                 </p>
             </IntroSection>
+
             <FiltersList>
-                <li>Wohnungen</li>
-                <li>Häuser</li>
-                <li>Grundstücken</li>
+                <Link to="/immobilien/musterstrasse-5/"><li>Immobilien</li></Link>
+                <Link to="/home-staging"><li>Home Staging</li></Link>
             </FiltersList>
             {/*{useEffect(()=>{*/}
             {/*    setData200(Object.values(immos))*/}

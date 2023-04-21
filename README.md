@@ -1,3 +1,31 @@
+<h2>
+Website Template for "Real Estate Agency"
+		in german
+
+	Gatsby + GraphQL + Contentfull + Formspree + Netlify
+
+		url:
+
+	Design in Figma:
+
+
+	Contentful:
+</h2>
+<p>
+<img alt="Gatsby" src="./src/assets/images/wir/peter.jpg" width="60" />
+</p>
+<h2>
+	GraphQL:
+
+
+	Formspree:
+
+
+	Nelify webhooks:
+
+</h2>
+
+
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
@@ -5,6 +33,7 @@
 </p>
 <h1 align="center">
   Gatsby Minimal Starter
+
 </h1>
 
 ## 🚀 Quick start

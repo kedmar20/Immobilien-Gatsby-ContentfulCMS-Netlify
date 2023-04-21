@@ -40,13 +40,13 @@ const Wir = ({ data }) => (
                 <p>
                     Aus Erfahrung weiß ich, wie wichtig der stete Kontakt zu Eigentümer und Interessent ist.  Gerne bin ich das Bindeglied zwischen beiden und stelle sicher, dass jeder alle relevanten Informationen zur Hand hat, damit das bestmögliche Ergebnis für beide Seiten erzielt wird
                 </p>
-                <a href={`mailto:${contactData.anna.email}`}>
+                <a href={`mailto:${contactData.heike.email}`}>
                     <MailIcon />
-                    {contactData.anna.email}
+                    {contactData.heike.email}
                 </a>
-                <a href={`tel:${contactData.anna.phone}`}>
+                <a href={`tel:${contactData.heike.phone}`}>
                     <PhoneIcon />
-                    {contactData.anna.phone}
+                    {contactData.heike.phone}
                 </a>
             </InfoItemContent>
             <img src={data.heike.publicURL} alt="" />
