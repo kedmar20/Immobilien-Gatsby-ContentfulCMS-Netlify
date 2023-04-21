@@ -26,7 +26,7 @@ const Kontakt = ({ data }) => (
             color="steel"
             offset="2000"
             position="bottomLeft"
-            size={(window.innerWidth>1100) ? "100px" : "0px"}
+            size={(!!window &&(window.innerWidth>1100)) ? "100px" : "0px"}
             distance="30px"
             imageSource={data.kontakt.publicURL}
         />
