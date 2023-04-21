@@ -5,7 +5,7 @@ import {GlobalStyle} from "assets/styles/GlobalStyles";
 import {theme} from "assets/styles/theme";
 import 'assets/styles/normalize.css';
 import { Navigation } from 'components/Navigation/Navigation';
-import { Footer } from 'components/Footer/Footer';
+import { Footer } from 'components/Footer/footer';
 
 export const MainTemplate = ({children})=>(
     <>
