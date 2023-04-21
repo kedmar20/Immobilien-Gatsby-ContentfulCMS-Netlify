@@ -7,7 +7,7 @@ import {
 } from 'assets/styles/pages/immobilien.styles';
 import { Thumbnail } from 'components/Thumbnail/Thumbnail';
 
-const Immobilien = ({data: {allContentfulImmoEinAngebot: {nodes: immos}}}) => {
+const Immobilien = ({data: {allContentfulImmoEinAngebot: {nodes: immos = []}}}) => {
     // const [data200, setData200] = useState([]);
     console.log(immos)
     console.log(immos[0].gallery[0].url)
@@ -37,11 +37,11 @@ const Immobilien = ({data: {allContentfulImmoEinAngebot: {nodes: immos}}}) => {
                         <h3>Neue Angebote von SeilerImmobilien folgen in Kürze</h3>
                     </EmptyState>)
                 : (<Gallery>
-                    {immos.map(({gallery, address, title, id})=>{
+                    {immos.map((immos)=>{
                         return(
                             // <Thumbnail url={immos[i].gallery[0].url} address={immos[i].address}/>
                             // <Thumbnail url={immo.gallery[0].url} address={immo.address}/>
-                            <Thumbnail url={gallery[0].url} address={address} titel={title} id={id} key={address}/>
+                            <Thumbnail url={immos.gallery[0].url} address={immos.address} titel={immos.title} key={immos.id}/>
                         )
                     })}
 
