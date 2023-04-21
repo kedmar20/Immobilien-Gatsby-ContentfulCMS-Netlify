@@ -41,7 +41,7 @@ const Immobilien = ({data: {allContentfulImmoEinAngebot: {nodes: immos}}}) => {
                         return(
                             // <Thumbnail url={immos[i].gallery[0].url} address={immos[i].address}/>
                             // <Thumbnail url={immo.gallery[0].url} address={immo.address}/>
-                            <Thumbnail url={gallery[0].url} address={address} titel={title} id={id} key={id}/>
+                            <Thumbnail url={gallery[0].url} address={address} titel={title} id={id} key={address}/>
                         )
                     })}
 
