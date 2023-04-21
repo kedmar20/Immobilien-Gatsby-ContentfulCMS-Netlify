@@ -81,8 +81,8 @@ const IndexPage = ({data}) => {
         <ShowcaseSection>
             <h2>Immobilien</h2>
             <div>
-                <StyledButton as={Link} to="/immobilien" isCentered>ANGEBOT</StyledButton>
-                <StyledButton as={Link} to="/homestaging" isCentered>HOME STAGING</StyledButton>
+                <StyledButton as={Link} to="/immobilien" >ANGEBOT</StyledButton>
+                <StyledButton as={Link} to="/homestaging">HOME STAGING</StyledButton>
             </div>
             <ShowcaseGallery>
                 <ShowcaseImage src={data.grid1.publicURL} alt="#" />

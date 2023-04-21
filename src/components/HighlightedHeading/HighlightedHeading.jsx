@@ -22,7 +22,7 @@ export const HighlightedHeading = ({
         return () => {
             document.removeEventListener('scroll', handlePlayStateChange);
         };
-    }, []);
+    }, [handlePlayStateChange]);
 
     return (
         <StyledHeading playState={playState} ref={headingRef} width={width} isRight={isRight} as={`h${level}`} {...props}>{children}</StyledHeading>
