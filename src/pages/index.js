@@ -90,9 +90,9 @@ const IndexPage = ({data}) => {
                 <ShowcaseImage src={data.grid3.publicURL} alt="#" />
                 <ShowcaseImage isBig src={data.grid4.publicURL} alt="#" />
                 {/*{console.log(window.innerWidth)}*/}
-                {(!!window &&(window.innerWidth>1100)) ? (
+                {(!(typeof window === "undefined") &&(window.innerWidth>1100)) ? (
                 <ShowcaseCorner position="bottomLeft" size="100px" distance="30px" color="beige" />):''}
-                {(!!window &&(window.innerWidth>1100)) ? (
+                {(!(typeof window === "undefined") &&(window.innerWidth>1100)) ? (
                 <ShowcaseCorner position="topRight" size="100px" distance="30px" color="dark" />):''}
             </ShowcaseGallery>
         </ShowcaseSection>
