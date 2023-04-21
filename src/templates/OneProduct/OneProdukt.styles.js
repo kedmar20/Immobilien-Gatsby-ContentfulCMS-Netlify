@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ContactDetails } from 'components/ContactDetails/ContactDetails';
 import {StyledHeading} from "../../components/HighlightedHeading/HighlightedHeading.styles";
 import {ContactDetailsWrapper} from "../../components/ContactDetails/ContactDetails.styles";
 

@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react"
+import React from "react"
 import { Link } from 'gatsby';
 import { HighlightedHeading } from 'components/HighlightedHeading/HighlightedHeading';
 import { graphql } from 'gatsby';
@@ -41,7 +41,7 @@ const Immobilien = ({data: {allContentfulImmoEinAngebot: {nodes: immos}}}) => {
                         return(
                             // <Thumbnail url={immos[i].gallery[0].url} address={immos[i].address}/>
                             // <Thumbnail url={immo.gallery[0].url} address={immo.address}/>
-                            <Thumbnail url={gallery[0].url} address={address} titel={title} id={id}/>
+                            <Thumbnail url={gallery[0].url} address={address} titel={title} id={id} key={id}/>
                         )
                     })}
 

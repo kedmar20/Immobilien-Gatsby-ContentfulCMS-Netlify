@@ -16,11 +16,11 @@ import { Carousel } from 'react-responsive-carousel';
 import { ContactDetails } from 'components/ContactDetails/ContactDetails';
 import {HighlightedHeading} from 'components/HighlightedHeading/HighlightedHeading';
 
-const galleryOptions = {
-    showStatus: true,
-    showThumbs: true,
-    infiniteLoop: true,
-};
+// const galleryOptions = {
+//     showStatus: true,
+//     showThumbs: true,
+//     infiniteLoop: true,
+// };
 
 const OneProdukt = ({data:{avatar, immos}}) => (
     <StyledContentWrapper>

@@ -30,7 +30,7 @@ export const CornerEffect = ({
         return () => {
             document.removeEventListener('scroll', handlePlayStateChange);
         };
-    }, []);
+    }, [handlePlayStateChange]);
 
     return (
         <CornerEffectWrapper
