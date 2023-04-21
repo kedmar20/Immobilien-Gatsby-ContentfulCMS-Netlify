@@ -3,9 +3,6 @@
  */
 const path = require("path");
 module.exports = {
-  flags: {
-    DEV_SSR: true
-  },
   siteMetadata: {
     title: `Gatsby-Immobilien`,
     siteUrl: `https://www.yourdomain.tld`
