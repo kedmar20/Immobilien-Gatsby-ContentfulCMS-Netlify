@@ -22,7 +22,7 @@ const Immobilien = ({data: {allContentfulImmoEinAngebot: {nodes: immos}}}) => {
             </IntroSection>
 
             <FiltersList>
-                <Link to="/immobilien/musterstrasse-5/"><li>Immobilien</li></Link>
+                <Link to="/immobilien"><li>Immobilien</li></Link>
                 <Link to="/home-staging"><li>Home Staging</li></Link>
             </FiltersList>
             {/*{useEffect(()=>{*/}
