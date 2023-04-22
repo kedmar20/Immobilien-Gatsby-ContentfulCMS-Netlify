@@ -7,12 +7,21 @@
 	<img alt="Gatsby" src="./src/assets/layouts/mobile/mobile-views-prototypes.jpg" width="160px" />
 </p>
 <h4>GraphQL:</h4>
-	<img alt="Gatsby" src="./src/assets/layouts/desktop/desktop-views.jpg" width="160px" />
-	<img alt="Gatsby" src="./src/assets/layouts/mobile/mobile-views-prototypes.jpg" width="160px" />
+<p>
+	<img alt="Gatsby" src="./src/assets/layouts/screens/graphiql.jpg" width="160px" />	
+</p>
+<h4>Contentful:</h4>
+<p>
+	<img alt="Gatsby" src="./src/assets/layouts/screens/contentful1.jpg" width="160px" />	
+	<img alt="Gatsby" src="./src/assets/layouts/screens/contentful2.jpg" width="160px" />	
+</p>
 <h4>Formspree:</h4>
-	<img alt="Gatsby" src="./src/assets/layouts/desktop/desktop-views.jpg" width="160px" />
-	<img alt="Gatsby" src="./src/assets/layouts/mobile/mobile-views-prototypes.jpg" width="160px" />
+<p>
+	<img alt="Gatsby" src="./src/assets/layouts/screens/formspree.jpg" width="160px" />	
+</p>
 	
+<br>
+<br>
 	
 	
 	
