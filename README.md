@@ -1,31 +1,21 @@
-<h2>
-Website Template for "Real Estate Agency"
-		in german
-
-	Gatsby + GraphQL + Contentfull + Formspree + Netlify
-
-		url:
-
-	Design in Figma:
-
-
-	Contentful:
-</h2>
+<h2>Website Template for "Real Estate Agency" (in german)</h2>
+<h1>Gatsby + GraphQL + Contentfull + Formspree + Netlify</h1>
+<h2>https://gatsby-contentful-netlify-immobilien.netlify.app</h2>		
+<h4>Design in Figma:</h4>
 <p>
-<img alt="Gatsby" src="./src/assets/images/wir/peter.jpg" width="60" />
+	<img alt="Gatsby" src="./src/assets/layouts/desktop/desktop-views.jpg" width="160px" />
+	<img alt="Gatsby" src="./src/assets/layouts/mobile/mobile-views-prototypes.jpg" width="160px" />
 </p>
-<h2>
-	GraphQL:
-
-
-	Formspree:
-
-
-	Nelify webhooks:
-
-</h2>
-
-
+<h4>GraphQL:</h4>
+	<img alt="Gatsby" src="./src/assets/layouts/desktop/desktop-views.jpg" width="160px" />
+	<img alt="Gatsby" src="./src/assets/layouts/mobile/mobile-views-prototypes.jpg" width="160px" />
+<h4>Formspree:</h4>
+	<img alt="Gatsby" src="./src/assets/layouts/desktop/desktop-views.jpg" width="160px" />
+	<img alt="Gatsby" src="./src/assets/layouts/mobile/mobile-views-prototypes.jpg" width="160px" />
+	
+	
+	
+	
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
